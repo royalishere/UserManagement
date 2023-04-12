@@ -1,5 +1,4 @@
-﻿using UserManagement.DAO;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,8 +18,6 @@ namespace UserManagement
         public AdminForm()
         {
             InitializeComponent();
-            LoadListRole();
-            AddRoleBinding();
         }
 
 
@@ -50,55 +47,16 @@ namespace UserManagement
                 tabPage2.Controls.Add(uf);
                 uf.Show();
             }
-        }
-        void LoadListRole()
-        {
-            dtgvRole.DataSource = RoleDAO.Instance.getListRole();
-        }
-
-
-        void AddRoleBinding()
-        {
-            txbRoleName.DataBindings.Add("Text", dtgvRole.DataSource, "ROLE", true, DataSourceUpdateMode.Never);
-        }
-
-        private void bntCreateRole_Click(object sender, EventArgs e)
-        {
-            fCreateRole f = new fCreateRole();
-            f.ShowDialog();
-            this.Show();
-
-            LoadListRole();
-        }
-
-        private void bntShowPrivsRole_Click(object sender, EventArgs e)
-        {
-            string roleName = txbRoleName.Text;
-
-            dtgvRolePrivs.DataSource = RoleDAO.Instance.GetPrivs_ByNameRole(roleName);
-        }
-
-        private void bntDeleteRole_Click(object sender, EventArgs e)
-        {
-            string roleName = txbRoleName.Text;
-
-            try
+            else
             {
-                RoleDAO.Instance.DeleteRole_ByRoleName(roleName);
-                LoadListRole();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
+                RolesForm rf = new RolesForm();
+                rf.TopLevel = false;
+                rf.AutoScroll = true;
+                rf.Dock = DockStyle.Fill;
+                tabPage3.Controls.Add(rf);
+                rf.Show();
             }
         }
-
-        private void bntEditRole_Click(object sender, EventArgs e)
-        {
-            string roleName = txbRoleName.Text;
-            fEditRole f = new fEditRole(roleName);
-            f.ShowDialog();
-            this.Show();
-        }
+   
     }
 }

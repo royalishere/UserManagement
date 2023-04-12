@@ -25,13 +25,13 @@ namespace UserManagement
 
         private void Fill_Combobox()
         {
-            string cmd = "SELECT TABLE_NAME FROM USER_TABLES";
+            string cmd = "select * from user_objects where object_type = 'TABLE' or object_type = 'VIEW'";
             OracleCommand command = new OracleCommand(cmd, LoginForm.con);
             OracleDataReader reader = command.ExecuteReader();
             DataTable dt = new DataTable();
             dt.Load(reader);
             comboBox1.DataSource = dt;
-            comboBox1.DisplayMember = "TABLE_NAME";
+            comboBox1.DisplayMember = "OBJECT_NAME";
         }
 
         private void comboBox1_SelectedValueChanged(object sender, EventArgs e)
@@ -89,6 +89,36 @@ namespace UserManagement
             catch
             {
                 MessageBox.Show("User name conflits with another user or role name");
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string objects = comboBox1.Text;
+            string cmd = "select object_type from user_objects where object_name = '" + objects + "'";
+            OracleCommand command = new OracleCommand(cmd, LoginForm.con);
+            OracleDataReader reader = command.ExecuteReader();
+            if (reader.Read())
+            {
+                if (reader.GetString(0) == "VIEW")
+                {
+                    cmd = "DROP VIEW " + objects;
+                }
+                else
+                {
+                    cmd = "DROP TABLE " + objects;
+                }
+            }   
+            try
+            {
+                command = new OracleCommand(cmd, LoginForm.con);
+                command.ExecuteNonQuery();
+                MessageBox.Show("Drop " + objects + " successfully");
+                Fill_Combobox();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

@@ -10,7 +10,6 @@ using System.Windows.Forms;
 using Oracle.ManagedDataAccess.Client;
 using System.Threading;
 
-// test
 namespace UserManagement.Login
 {
     public partial class LoginForm : Form
@@ -58,6 +57,9 @@ namespace UserManagement.Login
             }
         }
 
-
+        private void button1_Click(object sender, EventArgs e)
+        {
+            password.UseSystemPasswordChar = !password.UseSystemPasswordChar;
+        }
     }
 }
