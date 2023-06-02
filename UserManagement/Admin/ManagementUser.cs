@@ -10,6 +10,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using UserManagement.DAO;
 using UserManagement.DTO;
+using Oracle.ManagedDataAccess.Client;
+using System.Xml.Linq;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Data.SqlTypes;
 
 namespace UserManagement.Admin
 {
@@ -18,21 +22,306 @@ namespace UserManagement.Admin
         public ManagementUser()
         {
             InitializeComponent();
-            Load();
+            tabctrl_SelectedIndexChanged(null, null);
         }
 
-        private void Load()
+        // load tabcontrol when switch tab
+        private void tabctrl_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LoadListRole();
-            LoadListAllObjects();
-            LoadListNhanVien();
-            AddBinding();
+            if (tabctrl.SelectedTab == tpTable)
+            {
+                FillCombobox();
+            }
+            else if (tabctrl.SelectedTab == tpUser)
+            {
+                FillCombobox();
+                LoadUser();
+                LoadUserPrivs();
+            }
+            else
+            {
+                LoadListRole();
+                LoadListAllObjects();
+                LoadListNhanVien();
+            }
+        }   
+
+        private void FillCombobox()
+        {
+            string cmd = "select table_name from user_tables union select view_name from user_views";
+            OracleCommand command = new OracleCommand(cmd, LoginForm.con);
+            OracleDataReader reader = command.ExecuteReader();
+            DataTable dt = new DataTable();
+            dt.Load(reader);
+            cbTable.DataSource = dt;
+            cb_tables.DataSource = dt;
+            cbTable.DisplayMember = "TABLE_NAME";
+            cb_tables.DisplayMember = "TABLE_NAME";
+        }
+        private void cbTable_SelectedValueChanged(object sender, EventArgs e)
+        {
+            string cmd = "SELECT * FROM " + cbTable.Text;
+            OracleCommand command = new OracleCommand(cmd, LoginForm.con);
+            try
+            {
+                OracleDataReader reader = command.ExecuteReader();
+                DataTable dt = new DataTable();
+                dt.Load(reader);
+                dg_system.DataSource = dt;
+            }
+            catch
+            {
+                //reset datagirdview
+                dg_system.DataSource = null;
+            }
         }
 
-        private void AddBinding()
+        private void dg_system_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            txbUserName.DataBindings.Add("TEXT", dtgvNhanVien.DataSource, "MANV");
-            txbRoleName.DataBindings.Add("Text", dtgvRolePrivs.DataSource, "ROLE", true, DataSourceUpdateMode.Never);
+            string columnHeader = dg_system.Columns[0].HeaderText;
+            if (columnHeader == "MANV")
+            {
+                tbxusrname.Text = dg_system.CurrentRow.Cells[0].Value.ToString();
+            }
+        }
+
+        private void createview_btn_Click(object sender, EventArgs e)
+        {
+            string cols = getSelectedCol(fpn_column);
+            string viewname = txb_viewname.Text;
+            string obj = cbTable.Text;
+            OracleCommand cmd = new OracleCommand("create_view", LoginForm.con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("viewname", OracleDbType.Varchar2).Value = viewname;
+            cmd.Parameters.Add("cols", OracleDbType.Varchar2).Value = cols;
+            cmd.Parameters.Add("obj", OracleDbType.Varchar2).Value = obj;
+            try
+            {
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Tạo view thành công");
+                FillCombobox();
+            }
+            catch
+            {
+                MessageBox.Show("View đã tồn tại hoặc không đủ quyền hạn");
+            }
+        }
+
+        private void drop_btn_Click(object sender, EventArgs e)
+        {
+            string objects = cbTable.Text;
+            string cmd = "select object_type from user_objects where object_name = '" + objects + "'";
+            OracleCommand command = new OracleCommand(cmd, LoginForm.con);
+            OracleDataReader reader = command.ExecuteReader();
+            if (reader.Read())
+            {
+                if (reader.GetString(0) == "VIEW")
+                {
+                    cmd = "DROP VIEW " + objects;
+                }
+                else
+                {
+                    cmd = "DROP TABLE " + objects;
+                }
+            }
+            try
+            {
+                command = new OracleCommand(cmd, LoginForm.con);
+                command.ExecuteNonQuery();
+                MessageBox.Show("Drop " + objects + " successfully");
+                FillCombobox();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void createuser_btn_Click(object sender, EventArgs e)
+        {
+            string username = tbxusrname.Text.Trim();
+            string password = tbxpass.Text;
+            string pass_confirm = tbxpass_confirm.Text;
+            string is_lock = "";
+            if(ckb_islock.Checked)
+            {
+                is_lock = "ACCOUNT LOCK";
+            }
+            if(password == "")
+            {
+                MessageBox.Show("Mật khẩu không được để trống!");
+                return;
+            }
+            if(password != pass_confirm)
+            {
+                MessageBox.Show("Mật khẩu không khớp!");
+                return;
+            }
+            else
+            {
+                OracleCommand command = new OracleCommand("create_user", LoginForm.con);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("username", OracleDbType.Varchar2).Value = username;
+                command.Parameters.Add("password", OracleDbType.Varchar2).Value = password;
+                command.Parameters.Add("is_lock", OracleDbType.Varchar2).Value = is_lock;
+                try
+                {
+                    command.ExecuteNonQuery();
+                    MessageBox.Show("Tạo user " + username + " thành công");
+                }
+                catch
+                {
+                    MessageBox.Show("Username/role đã tồn tại trong hệ thống");
+                }
+            }
+        }
+
+        private void LoadUser()
+        {
+            string cmd = "select username, account_status, lock_date, created, authentication_type from dba_users";
+            OracleCommand command = new OracleCommand(cmd, LoginForm.con);
+            try
+            {
+                OracleDataReader reader = command.ExecuteReader();
+                DataTable dt = new DataTable();
+                dt.Load(reader);
+                dg_user.DataSource = dt;
+            }
+            catch
+            {
+                //reset datagirdview
+                dg_user.DataSource = null;
+            }
+        }
+
+        private void dg_user_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string columnHeader = dg_user.Columns[0].HeaderText;
+            if (columnHeader == "USERNAME")
+            {
+                tbxusername.Text = dg_user.CurrentRow.Cells[0].Value.ToString();
+            }
+        }
+
+        private void dtgvNhanVien_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string columnHeader = dtgvNhanVien.Columns[0].HeaderText;
+            if(columnHeader == "ROLE")
+            {
+                txbRoleName.Text = dtgvNhanVien.CurrentRow.Cells[0].Value.ToString();
+            }
+
+        }
+
+        private void dropuser_btn_Click(object sender, EventArgs e)
+        {
+            string user = tbxusername.Text;
+            string cmd = "drop user " + user + " cascade";
+            OracleCommand command = new OracleCommand(cmd, LoginForm.con);
+            try
+            {
+                command.ExecuteNonQuery();
+                MessageBox.Show("Drop user successsfully");
+                tbxusername.Text = "";
+                LoadUser();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void upduser_btn_Click(object sender, EventArgs e)
+        {
+            OracleCommand command = new OracleCommand("usr_change_pass", LoginForm.con);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.Add("username", OracleDbType.Varchar2).Value = tbxusername.Text;
+            command.Parameters.Add("password", OracleDbType.Varchar2).Value = tbxpassword.Text;
+            if (cbislock.Checked)
+            {
+                command.Parameters.Add("islock", OracleDbType.Varchar2).Value = "ACCOUNT LOCK";
+            }
+            else
+            {
+                command.Parameters.Add("islock", OracleDbType.Varchar2).Value = "ACCOUNT UNLOCK";
+            }
+            try
+            {
+                command.ExecuteNonQuery();
+                MessageBox.Show("Cập nhật thông tin " + tbxusername.Text + " thành công");
+                LoadUser();
+            }
+            catch
+            {
+                MessageBox.Show("User không tồn tại hoặc tình trạng user không khả dụng");
+            }
+        }
+
+        private void LoadUserPrivs()
+        {
+            // load privileges into datagridview user_tab_privs
+            string cmd = "select * from user_tab_privs";
+            OracleCommand command = new OracleCommand(cmd, LoginForm.con);
+            OracleDataReader reader = command.ExecuteReader();
+            DataTable dt = new DataTable();
+            dt.Load(reader);
+            dg_usertabprivs.DataSource = dt;
+
+            //load privileges into datagridview user_col_privs
+            cmd = "select * from user_col_privs";
+            command = new OracleCommand(cmd, LoginForm.con);
+            reader = command.ExecuteReader();
+            dt = new DataTable();
+            dt.Load(reader);
+            dg_usercolprivs.DataSource = dt;
+        }
+
+        private void cb_tables_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string table_name = cb_tables.Text;
+            string cmd = "select distinct(column_name) from all_tab_columns where table_name = '" + table_name + "'";
+            try
+            {
+                OracleCommand command = new OracleCommand(cmd, LoginForm.con);
+                OracleDataReader reader = command.ExecuteReader();
+                DataTable dt = new DataTable();
+                dt.Load(reader);
+                fpn_user.Controls.Clear();
+                foreach (DataRow row in dt.Rows)
+                {
+                    CheckBox checkBox = new CheckBox();
+                    checkBox.Text = row["COLUMN_NAME"].ToString();
+                    fpn_user.Controls.Add(checkBox);
+                }
+            }
+            catch
+            {
+                fpn_user.Controls.Clear();
+            }
+        }
+
+        private void cbTable_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string table_name = cbTable.Text;
+            string cmd = "select distinct(column_name) from all_tab_columns where table_name = '" + table_name + "'";
+            try
+            {
+                OracleCommand command = new OracleCommand(cmd, LoginForm.con);
+                OracleDataReader reader = command.ExecuteReader();
+                DataTable dt = new DataTable();
+                dt.Load(reader);
+                fpn_column.Controls.Clear();
+                foreach (DataRow row in dt.Rows)
+                {
+                    CheckBox checkBox = new CheckBox();
+                    checkBox.Text = row["COLUMN_NAME"].ToString();
+                    fpn_column.Controls.Add(checkBox);
+                }
+            }
+            catch
+            {
+                fpn_column.Controls.Clear();
+            }
         }
 
         private void LoadListRole()
@@ -72,7 +361,7 @@ namespace UserManagement.Admin
             string objectName = "";
             string objectType = "";
 
-            ComboBox cb = sender as ComboBox;
+            System.Windows.Forms.ComboBox cb = sender as System.Windows.Forms.ComboBox;
 
             if (cb.SelectedItem != null)
             {
@@ -81,9 +370,25 @@ namespace UserManagement.Admin
 
                 txbObjectType.Text = objectType;
             }
-
-            cbColumnObject.DataSource = RoleDAO.Instance.GetColumnsEachTable_Or_View(objectName, objectType);
-            cbColumnObject.DisplayMember = "COLUMN_NAME";
+            string cmd = "select distinct(column_name) from all_tab_columns where table_name = '" + objectName + "'";
+            try
+            {
+                OracleCommand command = new OracleCommand(cmd, LoginForm.con);
+                OracleDataReader reader = command.ExecuteReader();
+                DataTable dt = new DataTable();
+                dt.Load(reader);
+                fpn_role.Controls.Clear();
+                foreach (DataRow row in dt.Rows)
+                {
+                    CheckBox checkBox = new CheckBox();
+                    checkBox.Text = row["COLUMN_NAME"].ToString();
+                    fpn_role.Controls.Add(checkBox);
+                }
+            }
+            catch
+            {
+                fpn_role.Controls.Clear();
+            }
         }
 
         private void bntSearchRole_Click(object sender, EventArgs e)
@@ -121,6 +426,7 @@ namespace UserManagement.Admin
                 {
                     RoleDAO.Instance.CreateRole(roleName, rolePassword);
                     MessageBox.Show("Tạo role thành công");
+                    LoadListNhanVien();
                 }
                 catch(Exception ex)
                 {
@@ -137,6 +443,7 @@ namespace UserManagement.Admin
             {
                 RoleDAO.Instance.DeleteRole(roleName);
                 MessageBox.Show("Role " + roleName + " đã xóa thành công!");
+                LoadListNhanVien();
             }
             catch (Exception ex)
             {
@@ -173,21 +480,31 @@ namespace UserManagement.Admin
         {
             string roleName = txbRoleName.Text;
             string objectName = cbObjectName.Text;
-            string columnName = cbColumnObject.Text;
+            string columnName = getSelectedCol(fpn_role);
            
-            if (ckbSelect.Checked) {
-                RoleDAO.Instance.Grant_ObjectPriv_Role(roleName, objectName, "SELECT", "");
+            try
+            {
+                if (ckbSelect.Checked)
+                {
+                    RoleDAO.Instance.Grant_ObjectPriv_Role(roleName, objectName, "SELECT", "");
+                }
+                if (ckbInsert.Checked)
+                {
+                    RoleDAO.Instance.Grant_ObjectPriv_Role(roleName, objectName, "INSERT", columnName);
+                }
+                if (ckbDelete.Checked)
+                {
+                    RoleDAO.Instance.Grant_ObjectPriv_Role(roleName, objectName, "DELETE", "");
+                }
+                if (ckbUpdate.Checked)
+                {
+                    RoleDAO.Instance.Grant_ObjectPriv_Role(roleName, objectName, "UPDATE", columnName);
+                }
             }
-            if (ckbInsert.Checked) {
-                RoleDAO.Instance.Grant_ObjectPriv_Role(roleName, objectName, "INSERT", "");
+            catch 
+            {
+                MessageBox.Show("Role không tồn tại hoặc không đủ quyền hạn!");
             }
-            if (ckbDelete.Checked) {
-                RoleDAO.Instance.Grant_ObjectPriv_Role(roleName, objectName, "DELETE", "");
-            }
-            if (ckbUpdate.Checked) {
-                RoleDAO.Instance.Grant_ObjectPriv_Role(roleName, objectName, "UPDATE", columnName);
-            }
-
             LoadListRole();
         }
 
@@ -209,9 +526,9 @@ namespace UserManagement.Admin
                     MessageBox.Show("Cấp role cho User " + userName + " thành công!");
                 }
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Role không tồn tại hoặc không đủ quyền hạn!");
             }
         }
 
@@ -220,24 +537,191 @@ namespace UserManagement.Admin
             string roleName = txbRoleName.Text;
             string objectName = cbObjectName.Text;
 
-            if (ckbSelect.Checked)
+            try
             {
-                RoleDAO.Instance.Revoke_ObjectPriv_Role(roleName, objectName, "SELECT");
+                if (ckbSelect.Checked)
+                {
+                    RoleDAO.Instance.Revoke_ObjectPriv_Role(roleName, objectName, "SELECT");
+                }
+                if (ckbInsert.Checked)
+                {
+                    RoleDAO.Instance.Revoke_ObjectPriv_Role(roleName, objectName, "INSERT");
+                }
+                if (ckbDelete.Checked)
+                {
+                    RoleDAO.Instance.Revoke_ObjectPriv_Role(roleName, objectName, "DELETE");
+                }
+                if (ckbUpdate.Checked)
+                {
+                    RoleDAO.Instance.Revoke_ObjectPriv_Role(roleName, objectName, "UPDATE");
+                }
             }
-            if (ckbInsert.Checked)
+            catch
             {
-                RoleDAO.Instance.Revoke_ObjectPriv_Role(roleName, objectName, "INSERT");
+                MessageBox.Show("Role không tồn tại hoặc không đủ quyền hạn!");
             }
-            if (ckbDelete.Checked)
-            {
-                RoleDAO.Instance.Revoke_ObjectPriv_Role(roleName, objectName, "DELETE");
-            }
-            if (ckbUpdate.Checked)
-            {
-                RoleDAO.Instance.Revoke_ObjectPriv_Role(roleName, objectName, "UPDATE");
-            }
-
             LoadListRole();
+        }
+
+        private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            string cmd = "select username, account_status, lock_date, created, authentication_type from dba_users where username like \'%" + textBox3.Text.ToUpper() + "%\'";
+            OracleCommand command = new OracleCommand(cmd, LoginForm.con);
+            try
+            {
+                OracleDataReader reader = command.ExecuteReader();
+                DataTable dataTable = new DataTable();
+                dataTable.Load(reader);
+                dg_user.DataSource = dataTable;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private string getSelectedCol(FlowLayoutPanel f)
+        {
+            string cols = "";
+            foreach (Control c in f.Controls)
+            {
+                CheckBox cb = c as CheckBox;
+                if (cb.Checked)
+                {
+                    cols += cb.Text + ",";
+                }
+            }
+            if(cols != "")
+            {
+                cols = cols.Substring(0, cols.Length - 1); ;
+            }
+            return cols;
+        }
+
+        private string getGrantPrivs()
+        {
+            string privs = "";
+            string cols = getSelectedCol(fpn_user); 
+            if(cols != "")
+            {
+                if(insertcb.Checked)
+                {
+                    privs += "insert (" + cols + "),";
+                }
+                if(updatecb.Checked)
+                {
+                    privs += "update (" + cols + "),";
+                }
+            }
+            else
+            {
+                if (insertcb.Checked)
+                {
+                    privs += "insert,";
+                }
+                if (updatecb.Checked)
+                {
+                    privs += "update,";
+                }
+            }
+            if(selectcb.Checked)
+            {
+                privs += "select,";
+            }
+            if(delcb.Checked)
+            {
+                privs += "delete,";
+            }
+            if(privs != "")
+            {
+                privs = privs.Substring(0, privs.Length - 1);
+            }
+            return privs;
+        }
+
+        private string getRevokePrivs()
+        {
+            string privs = "";
+            if(insertcb.Checked)
+            {
+                privs += "insert,";
+            }
+            if(updatecb.Checked)
+            {
+                privs += "update,";
+            }
+            if (selectcb.Checked)
+            {
+                privs += "select,";
+            }
+            if (delcb.Checked)
+            {
+                privs += "delete,";
+            }
+            if (privs != "")
+            {
+                privs = privs.Substring(0, privs.Length - 1);
+            }
+            return privs;
+        }
+
+        private void grantbtn_Click(object sender, EventArgs e)
+        {
+            string grantee = tbxusername.Text;
+            string obj = cb_tables.Text;
+            string grantable = "";
+            if(grant_optcb.Checked)
+            {
+                grantable = " with grant option";
+            }
+            string privs = getGrantPrivs();
+
+            if (privs != "" && grantee != "" && obj != "")
+            {
+                OracleCommand cmd = new OracleCommand("grant_user_privs", LoginForm.con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("privs", OracleDbType.Varchar2).Value = privs;
+                cmd.Parameters.Add("obj", OracleDbType.Varchar2).Value = obj;
+                cmd.Parameters.Add("grantee", OracleDbType.Varchar2).Value = grantee;
+                cmd.Parameters.Add("grantable", OracleDbType.Varchar2).Value = grantable;
+                try
+                {
+
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Cấp quyền cho " + grantee + "thành công");
+                    LoadUserPrivs();
+                }
+                catch
+                {
+                    MessageBox.Show("Không thể thực hiện chức năng này. Thử lại sau");
+                }
+            }
+        }
+
+        private void revokebtn_Click(object sender, EventArgs e)
+        {
+            string grantee = tbxusername.Text;
+            string obj = cb_tables.Text;
+            string privs = getRevokePrivs();
+            if (privs != "" && grantee != "" && obj != "")
+            {
+                OracleCommand cmd = new OracleCommand("revoke_user_privs", LoginForm.con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("privs", OracleDbType.Varchar2).Value = privs;
+                cmd.Parameters.Add("obj", OracleDbType.Varchar2).Value = obj;
+                cmd.Parameters.Add("grantee", OracleDbType.Varchar2).Value = grantee;
+                try
+                {
+
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Lấy lại quyền từ " + grantee + "thành công");
+                    LoadUserPrivs();
+                }
+                catch
+                {
+                    MessageBox.Show("Không thể thực hiện chức năng này. Thử lại sau");
+                }
+            }
         }
     }
 }

@@ -40,11 +40,6 @@ namespace UserManagement
             }
         }
 
-        private void open_empform(object obj)
-        {
-            Application.Run(new ManagementUser());
-        }
-
         private void bntLogin_Click(object sender, EventArgs e)
         {
             string ID = txbUserName.Text;
@@ -52,7 +47,9 @@ namespace UserManagement
             if (ConnectOracle(ID, pass))
             {
                 //close login form
-                t = new Thread(open_empform);
+                this.Close();
+                Type AdminType = typeof(ManagementUser);
+                t = new Thread(() => Application.Run(new Form1()));
                 t.SetApartmentState(ApartmentState.STA);
                 t.Start();
             }
@@ -61,6 +58,32 @@ namespace UserManagement
         private void bntExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            txbPassword.UseSystemPasswordChar = !txbPassword.UseSystemPasswordChar;
+        }
+
+        private void btn_adminlog_Click(object sender, EventArgs e)
+        {
+            string ID = txbUserName.Text;
+            string pass = txbPassword.Text;
+            bool connected = ConnectOracle(ID, pass);
+            OracleCommand cmd = new OracleCommand("select count(*) from session_roles where role = \'DBA\'", con);
+            int count = Convert.ToInt32(cmd.ExecuteScalar());
+            if (connected && count > 0)
+            {
+                //close login form
+                this.Close();
+                t = new Thread(() => Application.Run(new ManagementUser()));
+                t.SetApartmentState(ApartmentState.STA);
+                t.Start();
+            }
+            else
+            {
+                MessageBox.Show("Bạn không có quyền truy cập vào chức năng này");
+            }
         }
     }
 }

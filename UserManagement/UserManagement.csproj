@@ -97,6 +97,12 @@
     </Compile>
     <Compile Include="DAO\RoleDAO.cs" />
     <Compile Include="DTO\ObjectDTO.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>

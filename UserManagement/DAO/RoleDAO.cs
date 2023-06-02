@@ -55,7 +55,7 @@ namespace UserManagement.DAO
 
         public DataTable GetListNhanVien()
         {
-            string query = "SELECT MANV, TENNV, VAITRO FROM ADMIN.NHANVIEN ORDER BY VAITRO"; // XUất ra usert mới đúng
+            string query = "select role, role_id, password_required, authentication_type from dba_roles"; // XUất ra user mới đúng
             //string query = "SELECT * FROM NHANVIEN WHERE MANV IN (SELECT USERNAME FROM ALL_USERS)";
 
             OracleCommand command = new OracleCommand(query, LoginForm.con);
@@ -148,8 +148,8 @@ namespace UserManagement.DAO
             command.CommandType = CommandType.StoredProcedure;
             command.Parameters.Add("roleName", roleName);
             command.Parameters.Add("objectName", objectName);
-            command.Parameters.Add("tabPrivs", objectPrivs);
             command.Parameters.Add("columnName", columnName);
+            command.Parameters.Add("tabPrivs", objectPrivs);
 
             command.ExecuteNonQuery();
         }
