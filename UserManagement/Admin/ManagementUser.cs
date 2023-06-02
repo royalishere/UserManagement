@@ -688,7 +688,7 @@ namespace UserManagement.Admin
                 {
 
                     cmd.ExecuteNonQuery();
-                    MessageBox.Show("Cấp quyền cho " + grantee + "thành công");
+                    MessageBox.Show("Cấp quyền cho " + grantee + " thành công");
                     LoadUserPrivs();
                 }
                 catch
@@ -714,7 +714,7 @@ namespace UserManagement.Admin
                 {
 
                     cmd.ExecuteNonQuery();
-                    MessageBox.Show("Lấy lại quyền từ " + grantee + "thành công");
+                    MessageBox.Show("Lấy lại quyền từ " + grantee + " thành công");
                     LoadUserPrivs();
                 }
                 catch
