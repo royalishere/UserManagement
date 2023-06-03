@@ -17,6 +17,7 @@ namespace UserManagement
     {
         Thread t;
         public static OracleConnection con;
+        public static string conString;
 
         public LoginForm()
         {
@@ -26,7 +27,7 @@ namespace UserManagement
 
         private bool ConnectOracle(string ID, string pass)
         {
-            string conString = "Data Source= " + Orcl.hostname + ":" + Orcl.port + "/" + Orcl.servicename + ";User Id=" + ID + ";Password=" + pass + ";";
+            conString = "Data Source= " + Orcl.hostname + ":" + Orcl.port + "/" + Orcl.servicename + ";User Id=" + ID + ";Password=" + pass + ";";
             con = new OracleConnection(conString);
             try
             {
