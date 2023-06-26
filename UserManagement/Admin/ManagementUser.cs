@@ -6,18 +6,17 @@ using System.Drawing;
 using System.Linq;
 using System.Security.AccessControl;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 using UserManagement.DAO;
 using UserManagement.DTO;
 using Oracle.ManagedDataAccess.Client;
-using System.Xml.Linq;
-using System.Data.SqlTypes;
 
 namespace UserManagement.Admin
 {
     public partial class ManagementUser : Form
     {
+        Thread t;
         public ManagementUser()
         {
             InitializeComponent();
@@ -730,6 +729,16 @@ namespace UserManagement.Admin
                 MessageBox.Show("Role không tồn tại hoặc không đủ quyền hạn!");
             }
             LoadListRole();
+        }
+
+        private void logout_btn_Click(object sender, EventArgs e)
+        {
+            LoginForm.con.Close();
+            this.Close();
+
+            t = new Thread(() => Application.Run(new LoginForm()));
+            t.SetApartmentState(ApartmentState.STA);
+            t.Start();
         }
     }
 }

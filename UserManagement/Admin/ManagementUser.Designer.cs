@@ -28,16 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabctrl = new System.Windows.Forms.TabControl();
             this.tpTable = new System.Windows.Forms.TabPage();
             this.dg_system = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.logout_btn = new System.Windows.Forms.Button();
             this.label24 = new System.Windows.Forms.Label();
             this.txb_viewname = new System.Windows.Forms.TextBox();
             this.createview_btn = new System.Windows.Forms.Button();
@@ -173,26 +173,21 @@
             this.dg_system.AllowUserToAddRows = false;
             this.dg_system.AllowUserToDeleteRows = false;
             this.dg_system.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dg_system.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dg_system.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dg_system.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dg_system.Location = new System.Drawing.Point(2, 268);
+            this.dg_system.Location = new System.Drawing.Point(2, 267);
+            this.dg_system.Margin = new System.Windows.Forms.Padding(0);
             this.dg_system.Name = "dg_system";
             this.dg_system.ReadOnly = true;
             this.dg_system.RowHeadersVisible = false;
-            this.dg_system.Size = new System.Drawing.Size(1338, 433);
+            this.dg_system.Size = new System.Drawing.Size(1338, 434);
             this.dg_system.TabIndex = 3;
             this.dg_system.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_system_CellClick);
             // 
             // panel3
             // 
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.logout_btn);
             this.panel3.Controls.Add(this.label24);
             this.panel3.Controls.Add(this.txb_viewname);
             this.panel3.Controls.Add(this.createview_btn);
@@ -215,8 +210,25 @@
             this.panel3.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.panel3.Location = new System.Drawing.Point(2, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1338, 266);
+            this.panel3.Size = new System.Drawing.Size(1338, 265);
             this.panel3.TabIndex = 2;
+            // 
+            // logout_btn
+            // 
+            this.logout_btn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.logout_btn.FlatAppearance.BorderSize = 0;
+            this.logout_btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.logout_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.logout_btn.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.logout_btn.ForeColor = System.Drawing.Color.Red;
+            this.logout_btn.Location = new System.Drawing.Point(1261, 5);
+            this.logout_btn.Margin = new System.Windows.Forms.Padding(0);
+            this.logout_btn.Name = "logout_btn";
+            this.logout_btn.Size = new System.Drawing.Size(70, 26);
+            this.logout_btn.TabIndex = 51;
+            this.logout_btn.Text = "Đăng xuất";
+            this.logout_btn.UseVisualStyleBackColor = true;
+            this.logout_btn.Click += new System.EventHandler(this.logout_btn_Click);
             // 
             // label24
             // 
@@ -237,11 +249,12 @@
             // 
             // createview_btn
             // 
+            this.createview_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.createview_btn.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.createview_btn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.createview_btn.Location = new System.Drawing.Point(482, 205);
+            this.createview_btn.Location = new System.Drawing.Point(482, 203);
             this.createview_btn.Name = "createview_btn";
-            this.createview_btn.Size = new System.Drawing.Size(69, 23);
+            this.createview_btn.Size = new System.Drawing.Size(72, 26);
             this.createview_btn.TabIndex = 48;
             this.createview_btn.Text = "Tạo view";
             this.createview_btn.UseVisualStyleBackColor = true;
@@ -281,11 +294,12 @@
             // 
             // createuser_btn
             // 
+            this.createuser_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.createuser_btn.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.createuser_btn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.createuser_btn.Location = new System.Drawing.Point(874, 205);
+            this.createuser_btn.Location = new System.Drawing.Point(881, 203);
             this.createuser_btn.Name = "createuser_btn";
-            this.createuser_btn.Size = new System.Drawing.Size(77, 23);
+            this.createuser_btn.Size = new System.Drawing.Size(72, 26);
             this.createuser_btn.TabIndex = 12;
             this.createuser_btn.Text = "Tạo mới";
             this.createuser_btn.UseVisualStyleBackColor = true;
@@ -354,11 +368,13 @@
             // 
             // drop_btn
             // 
+            this.drop_btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.drop_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.drop_btn.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.drop_btn.ForeColor = System.Drawing.Color.Red;
-            this.drop_btn.Location = new System.Drawing.Point(160, 205);
+            this.drop_btn.Location = new System.Drawing.Point(160, 202);
             this.drop_btn.Name = "drop_btn";
-            this.drop_btn.Size = new System.Drawing.Size(76, 23);
+            this.drop_btn.Size = new System.Drawing.Size(72, 26);
             this.drop_btn.TabIndex = 3;
             this.drop_btn.Text = "Drop";
             this.drop_btn.UseVisualStyleBackColor = true;
@@ -404,7 +420,7 @@
             this.tpUser.Margin = new System.Windows.Forms.Padding(2);
             this.tpUser.Name = "tpUser";
             this.tpUser.Padding = new System.Windows.Forms.Padding(2);
-            this.tpUser.Size = new System.Drawing.Size(1342, 703);
+            this.tpUser.Size = new System.Drawing.Size(978, 703);
             this.tpUser.TabIndex = 1;
             this.tpUser.Text = "NGƯỜI DÙNG";
             this.tpUser.UseVisualStyleBackColor = true;
@@ -415,25 +431,25 @@
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel7.Location = new System.Drawing.Point(460, 466);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(880, 235);
+            this.panel7.Size = new System.Drawing.Size(516, 235);
             this.panel7.TabIndex = 4;
             // 
             // dg_usercolprivs
             // 
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dg_usercolprivs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dg_usercolprivs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
             this.dg_usercolprivs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dg_usercolprivs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dg_usercolprivs.Location = new System.Drawing.Point(0, 0);
             this.dg_usercolprivs.Name = "dg_usercolprivs";
             this.dg_usercolprivs.RowHeadersVisible = false;
-            this.dg_usercolprivs.Size = new System.Drawing.Size(880, 235);
+            this.dg_usercolprivs.Size = new System.Drawing.Size(516, 235);
             this.dg_usercolprivs.TabIndex = 0;
             // 
             // panel8
@@ -442,25 +458,25 @@
             this.panel8.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel8.Location = new System.Drawing.Point(460, 230);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(880, 236);
+            this.panel8.Size = new System.Drawing.Size(516, 236);
             this.panel8.TabIndex = 3;
             // 
             // dg_usertabprivs
             // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dg_usertabprivs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dg_usertabprivs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
             this.dg_usertabprivs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dg_usertabprivs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dg_usertabprivs.Location = new System.Drawing.Point(0, 0);
             this.dg_usertabprivs.Name = "dg_usertabprivs";
             this.dg_usertabprivs.RowHeadersVisible = false;
-            this.dg_usertabprivs.Size = new System.Drawing.Size(880, 236);
+            this.dg_usertabprivs.Size = new System.Drawing.Size(516, 236);
             this.dg_usertabprivs.TabIndex = 0;
             // 
             // panel6
@@ -477,14 +493,14 @@
             this.dg_user.AllowUserToAddRows = false;
             this.dg_user.AllowUserToDeleteRows = false;
             this.dg_user.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dg_user.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dg_user.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle18;
             this.dg_user.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dg_user.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dg_user.Location = new System.Drawing.Point(0, 0);
@@ -497,6 +513,7 @@
             // 
             // panel5
             // 
+            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel5.Controls.Add(this.label22);
             this.panel5.Controls.Add(this.label21);
             this.panel5.Controls.Add(this.textBox3);
@@ -522,7 +539,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Location = new System.Drawing.Point(2, 2);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1338, 228);
+            this.panel5.Size = new System.Drawing.Size(974, 228);
             this.panel5.TabIndex = 0;
             // 
             // label22
@@ -539,7 +556,7 @@
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label21.Location = new System.Drawing.Point(274, 202);
+            this.label21.Location = new System.Drawing.Point(272, 202);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(57, 15);
             this.label21.TabIndex = 44;
@@ -547,9 +564,10 @@
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(336, 199);
+            this.textBox3.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.textBox3.Location = new System.Drawing.Point(336, 198);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(122, 20);
+            this.textBox3.Size = new System.Drawing.Size(122, 22);
             this.textBox3.TabIndex = 43;
             this.textBox3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox3_KeyPress);
             // 
@@ -566,11 +584,13 @@
             // 
             // revokebtn
             // 
+            this.revokebtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.revokebtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.revokebtn.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.revokebtn.ForeColor = System.Drawing.Color.Red;
-            this.revokebtn.Location = new System.Drawing.Point(621, 171);
+            this.revokebtn.Location = new System.Drawing.Point(619, 171);
             this.revokebtn.Name = "revokebtn";
-            this.revokebtn.Size = new System.Drawing.Size(67, 23);
+            this.revokebtn.Size = new System.Drawing.Size(70, 26);
             this.revokebtn.TabIndex = 41;
             this.revokebtn.Text = "REVOKE";
             this.revokebtn.UseVisualStyleBackColor = true;
@@ -578,11 +598,13 @@
             // 
             // grantbtn
             // 
+            this.grantbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.grantbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.grantbtn.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.grantbtn.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.grantbtn.Location = new System.Drawing.Point(523, 171);
+            this.grantbtn.ForeColor = System.Drawing.Color.DarkCyan;
+            this.grantbtn.Location = new System.Drawing.Point(521, 171);
             this.grantbtn.Name = "grantbtn";
-            this.grantbtn.Size = new System.Drawing.Size(67, 23);
+            this.grantbtn.Size = new System.Drawing.Size(70, 26);
             this.grantbtn.TabIndex = 40;
             this.grantbtn.Text = "GRANT";
             this.grantbtn.UseVisualStyleBackColor = true;
@@ -671,11 +693,13 @@
             // 
             // dropuser_btn
             // 
+            this.dropuser_btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.dropuser_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.dropuser_btn.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.dropuser_btn.ForeColor = System.Drawing.Color.Red;
             this.dropuser_btn.Location = new System.Drawing.Point(200, 167);
             this.dropuser_btn.Name = "dropuser_btn";
-            this.dropuser_btn.Size = new System.Drawing.Size(67, 23);
+            this.dropuser_btn.Size = new System.Drawing.Size(67, 26);
             this.dropuser_btn.TabIndex = 16;
             this.dropuser_btn.Text = "Xóa";
             this.dropuser_btn.UseVisualStyleBackColor = true;
@@ -683,11 +707,13 @@
             // 
             // upduser_btn
             // 
+            this.upduser_btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.upduser_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.upduser_btn.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.upduser_btn.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.upduser_btn.ForeColor = System.Drawing.Color.DarkCyan;
             this.upduser_btn.Location = new System.Drawing.Point(108, 167);
             this.upduser_btn.Name = "upduser_btn";
-            this.upduser_btn.Size = new System.Drawing.Size(67, 23);
+            this.upduser_btn.Size = new System.Drawing.Size(67, 26);
             this.upduser_btn.TabIndex = 15;
             this.upduser_btn.Text = "Cập nhật";
             this.upduser_btn.UseVisualStyleBackColor = true;
@@ -770,7 +796,7 @@
             this.tpRole.Location = new System.Drawing.Point(4, 22);
             this.tpRole.Margin = new System.Windows.Forms.Padding(0);
             this.tpRole.Name = "tpRole";
-            this.tpRole.Size = new System.Drawing.Size(1342, 703);
+            this.tpRole.Size = new System.Drawing.Size(978, 703);
             this.tpRole.TabIndex = 2;
             this.tpRole.Text = "VAI TRÒ";
             this.tpRole.UseVisualStyleBackColor = true;
@@ -799,8 +825,8 @@
             this.dtgvNhanVien.ReadOnly = true;
             this.dtgvNhanVien.RowHeadersVisible = false;
             this.dtgvNhanVien.RowHeadersWidth = 51;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.dtgvNhanVien.RowsDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.dtgvNhanVien.RowsDefaultCellStyle = dataGridViewCellStyle19;
             this.dtgvNhanVien.RowTemplate.Height = 24;
             this.dtgvNhanVien.Size = new System.Drawing.Size(533, 496);
             this.dtgvNhanVien.TabIndex = 0;
@@ -810,7 +836,7 @@
             // 
             this.panel4.Controls.Add(this.dtgvRolePrivs);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel4.Location = new System.Drawing.Point(537, 207);
+            this.panel4.Location = new System.Drawing.Point(173, 207);
             this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(805, 496);
@@ -830,14 +856,15 @@
             this.dtgvRolePrivs.ReadOnly = true;
             this.dtgvRolePrivs.RowHeadersVisible = false;
             this.dtgvRolePrivs.RowHeadersWidth = 51;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.dtgvRolePrivs.RowsDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.dtgvRolePrivs.RowsDefaultCellStyle = dataGridViewCellStyle20;
             this.dtgvRolePrivs.RowTemplate.Height = 24;
             this.dtgvRolePrivs.Size = new System.Drawing.Size(805, 496);
             this.dtgvRolePrivs.TabIndex = 1;
             // 
             // panel2
             // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.fpn_role);
             this.panel2.Controls.Add(this.bntAddUserToRole);
@@ -872,7 +899,7 @@
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1342, 207);
+            this.panel2.Size = new System.Drawing.Size(978, 207);
             this.panel2.TabIndex = 11;
             // 
             // label6
@@ -898,11 +925,12 @@
             // 
             // bntAddUserToRole
             // 
+            this.bntAddUserToRole.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bntAddUserToRole.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.bntAddUserToRole.Location = new System.Drawing.Point(552, 167);
             this.bntAddUserToRole.Margin = new System.Windows.Forms.Padding(2);
             this.bntAddUserToRole.Name = "bntAddUserToRole";
-            this.bntAddUserToRole.Size = new System.Drawing.Size(78, 30);
+            this.bntAddUserToRole.Size = new System.Drawing.Size(70, 26);
             this.bntAddUserToRole.TabIndex = 35;
             this.bntAddUserToRole.Text = "Cấp role";
             this.bntAddUserToRole.UseVisualStyleBackColor = true;
@@ -922,11 +950,12 @@
             // 
             // bntShowRole
             // 
+            this.bntShowRole.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bntShowRole.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.bntShowRole.Location = new System.Drawing.Point(1221, 173);
+            this.bntShowRole.Location = new System.Drawing.Point(1221, 171);
             this.bntShowRole.Margin = new System.Windows.Forms.Padding(2);
             this.bntShowRole.Name = "bntShowRole";
-            this.bntShowRole.Size = new System.Drawing.Size(88, 24);
+            this.bntShowRole.Size = new System.Drawing.Size(88, 26);
             this.bntShowRole.TabIndex = 43;
             this.bntShowRole.Text = "Xem tất cả";
             this.bntShowRole.UseVisualStyleBackColor = true;
@@ -936,7 +965,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(515, 73);
+            this.label10.Location = new System.Drawing.Point(524, 71);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(33, 16);
@@ -945,7 +974,7 @@
             // 
             // txbUserName
             // 
-            this.txbUserName.Location = new System.Drawing.Point(552, 68);
+            this.txbUserName.Location = new System.Drawing.Point(559, 68);
             this.txbUserName.Margin = new System.Windows.Forms.Padding(2);
             this.txbUserName.Name = "txbUserName";
             this.txbUserName.Size = new System.Drawing.Size(92, 22);
@@ -972,11 +1001,12 @@
             // 
             // bntSearchRole
             // 
+            this.bntSearchRole.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bntSearchRole.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.bntSearchRole.Location = new System.Drawing.Point(1063, 173);
+            this.bntSearchRole.Location = new System.Drawing.Point(1063, 171);
             this.bntSearchRole.Margin = new System.Windows.Forms.Padding(2);
             this.bntSearchRole.Name = "bntSearchRole";
-            this.bntSearchRole.Size = new System.Drawing.Size(82, 24);
+            this.bntSearchRole.Size = new System.Drawing.Size(81, 26);
             this.bntSearchRole.TabIndex = 38;
             this.bntSearchRole.Text = "Tìm kiếm";
             this.bntSearchRole.UseVisualStyleBackColor = true;
@@ -984,12 +1014,14 @@
             // 
             // bntRevokeRole
             // 
+            this.bntRevokeRole.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.bntRevokeRole.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bntRevokeRole.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.bntRevokeRole.ForeColor = System.Drawing.Color.Red;
             this.bntRevokeRole.Location = new System.Drawing.Point(876, 167);
             this.bntRevokeRole.Margin = new System.Windows.Forms.Padding(2);
             this.bntRevokeRole.Name = "bntRevokeRole";
-            this.bntRevokeRole.Size = new System.Drawing.Size(71, 30);
+            this.bntRevokeRole.Size = new System.Drawing.Size(70, 26);
             this.bntRevokeRole.TabIndex = 37;
             this.bntRevokeRole.Text = "REVOKE";
             this.bntRevokeRole.UseVisualStyleBackColor = true;
@@ -997,12 +1029,14 @@
             // 
             // bntGrantRole
             // 
+            this.bntGrantRole.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.bntGrantRole.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bntGrantRole.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.bntGrantRole.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.bntGrantRole.ForeColor = System.Drawing.Color.DarkCyan;
             this.bntGrantRole.Location = new System.Drawing.Point(779, 167);
             this.bntGrantRole.Margin = new System.Windows.Forms.Padding(2);
             this.bntGrantRole.Name = "bntGrantRole";
-            this.bntGrantRole.Size = new System.Drawing.Size(68, 30);
+            this.bntGrantRole.Size = new System.Drawing.Size(70, 26);
             this.bntGrantRole.TabIndex = 36;
             this.bntGrantRole.Text = "GRANT";
             this.bntGrantRole.UseVisualStyleBackColor = true;
@@ -1090,11 +1124,14 @@
             // 
             // bntCreateRole
             // 
+            this.bntCreateRole.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.bntCreateRole.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bntCreateRole.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.bntCreateRole.Location = new System.Drawing.Point(81, 167);
+            this.bntCreateRole.ForeColor = System.Drawing.Color.DarkCyan;
+            this.bntCreateRole.Location = new System.Drawing.Point(103, 167);
             this.bntCreateRole.Margin = new System.Windows.Forms.Padding(2);
             this.bntCreateRole.Name = "bntCreateRole";
-            this.bntCreateRole.Size = new System.Drawing.Size(61, 30);
+            this.bntCreateRole.Size = new System.Drawing.Size(70, 26);
             this.bntCreateRole.TabIndex = 13;
             this.bntCreateRole.Text = "Tạo";
             this.bntCreateRole.UseVisualStyleBackColor = true;
@@ -1102,11 +1139,12 @@
             // 
             // bntChangePasswordRole
             // 
+            this.bntChangePasswordRole.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bntChangePasswordRole.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.bntChangePasswordRole.Location = new System.Drawing.Point(220, 167);
             this.bntChangePasswordRole.Margin = new System.Windows.Forms.Padding(2);
             this.bntChangePasswordRole.Name = "bntChangePasswordRole";
-            this.bntChangePasswordRole.Size = new System.Drawing.Size(103, 30);
+            this.bntChangePasswordRole.Size = new System.Drawing.Size(92, 26);
             this.bntChangePasswordRole.TabIndex = 15;
             this.bntChangePasswordRole.Text = "Đổi mật khẩu";
             this.bntChangePasswordRole.UseVisualStyleBackColor = true;
@@ -1114,12 +1152,14 @@
             // 
             // bntDeleleteRole
             // 
+            this.bntDeleleteRole.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.bntDeleleteRole.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bntDeleleteRole.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.bntDeleleteRole.ForeColor = System.Drawing.Color.Red;
-            this.bntDeleleteRole.Location = new System.Drawing.Point(401, 167);
+            this.bntDeleleteRole.Location = new System.Drawing.Point(365, 167);
             this.bntDeleleteRole.Margin = new System.Windows.Forms.Padding(2);
             this.bntDeleleteRole.Name = "bntDeleleteRole";
-            this.bntDeleleteRole.Size = new System.Drawing.Size(61, 30);
+            this.bntDeleleteRole.Size = new System.Drawing.Size(70, 26);
             this.bntDeleleteRole.TabIndex = 14;
             this.bntDeleleteRole.Text = "Xóa";
             this.bntDeleleteRole.UseVisualStyleBackColor = true;
@@ -1156,7 +1196,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(215, 76);
+            this.label2.Location = new System.Drawing.Point(271, 76);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(63, 16);
@@ -1202,7 +1242,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ManagementUser";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Quản lý người dùng";
+            this.Text = "Quản lý nhân viên (ADMIN)";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.tabctrl.ResumeLayout(false);
             this.tpTable.ResumeLayout(false);
@@ -1318,5 +1358,6 @@
         private System.Windows.Forms.FlowLayoutPanel fpn_column;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.FlowLayoutPanel fpn_role;
+        private System.Windows.Forms.Button logout_btn;
     }
 }

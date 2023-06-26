@@ -35,3 +35,4 @@ C:\Users\hoang\Desktop\UserManagement\UserManagement\obj\Release\UserManagement.
 C:\Users\hoang\Desktop\UserManagement\UserManagement\obj\Release\UserManagement.csproj.CopyComplete
 C:\Users\hoang\Desktop\UserManagement\UserManagement\obj\Release\UserManagement.exe
 C:\Users\hoang\Desktop\UserManagement\UserManagement\obj\Release\UserManagement.pdb
+C:\Users\hoang\Desktop\UserManagement\UserManagement\obj\Release\UserManagement.HomeForm.resources

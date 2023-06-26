@@ -87,12 +87,13 @@ CREATE TABLE PHANCONG (
     CONSTRAINT PHANCONG_PK PRIMARY KEY (MANV, MADA)
 );
 -- insert data into tables
+
 -- NHANVIEN
-insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, vaitro, manql, phg) values ('Kaycee', 'KAYC433', 'F', '26/SEP/1981', '6 Gina Court', '0689666776', 834, 15, 'BANGD', null, null);
-insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, vaitro, manql, phg) values ('Ricca', 'RICC407', 'F', '19/APR/1970', '9 Warbler Place', '0845732474', 679, 12, 'BANGD', null, null);
-insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, vaitro, manql, phg) values ('Raff', 'RAFF267', 'M', '18/FEB/1961', '2 Sullivan Parkway', '0216770648', 530, 20, 'BANGD', null, null);
-insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, vaitro, manql, phg) values ('Brigham', 'BRIG447', 'M', '26/JUN/1954', '4 Main Way', '0852211844', 906, 14, 'BANGD', null, null);
-insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, vaitro, manql, phg) values ('Lari', 'LARI250', 'F', '19/DEC/1950', '92366 Waubesa Crossing', '0143560831', 557, 8, 'BANGD', null, null);
+insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, vaitro, manql, phg) values ('Kaycee', 'KAYC433', 'F', '26/SEP/1981', '6 Gina Court', '0689666776', 834, 15, 'BANGD', null, 101);
+insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, vaitro, manql, phg) values ('Ricca', 'RICC407', 'F', '19/APR/1970', '9 Warbler Place', '0845732474', 679, 12, 'BANGD', null, 102);
+insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, vaitro, manql, phg) values ('Raff', 'RAFF267', 'M', '18/FEB/1961', '2 Sullivan Parkway', '0216770648', 530, 20, 'BANGD', null, 105);
+insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, vaitro, manql, phg) values ('Brigham', 'BRIG447', 'M', '26/JUN/1954', '4 Main Way', '0852211844', 906, 14, 'BANGD', null, 106);
+insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, vaitro, manql, phg) values ('Lari', 'LARI250', 'F', '19/DEC/1950', '92366 Waubesa Crossing', '0143560831', 557, 8, 'BANGD', null, 107);
 
 insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, vaitro, manql, phg) values ('Bartel', 'BART317', 'M', '20/NOV/1957', '6304 Loftsgordon Junction', '0939656751', 377, 12, 'TRUONGDEAN', null, 101);
 insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, vaitro, manql, phg) values ('Anselma', 'ANSE398', 'F', '18/MAY/1971', '3623 Brown Park', '0556864902', 990, 7, 'TRUONGDEAN', null, 102);
@@ -125,7 +126,7 @@ insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, 
 insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, vaitro, manql, phg) values ('Garald', 'GARA176', 'M', '5/SEP/1965', '50134 School Trail', '0163959704', 228, 13, 'TRUONGPHONG', null, 104);
 insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, vaitro, manql, phg) values ('Gerry', 'GERR263', 'M', '8/APR/1966', '551 Mariners Cove Way', '0930477919', 145, 18, 'TRUONGPHONG', null, 105);
 insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, vaitro, manql, phg) values ('Wilmar', 'WILM121', 'M', '30/MAR/1978', '7 Jenifer Junction', '0785369083', 366, 17, 'TRUONGPHONG', null, 106);
-insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, vaitro, manql, phg) values ('Angela', 'ANGE325', 'F', '14/FEB/1958', '35 Swallow Park', '0781730847', 737, 20, 'TRUONGPHONG', null, 107);
+insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, vaitro, manql, phg) values ('Angela', 'ANGE326', 'F', '14/FEB/1958', '35 Swallow Park', '0781730847', 737, 20, 'TRUONGPHONG', null, 107);
 insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, vaitro, manql, phg) values ('Celie', 'CELI275', 'F', '30/JUN/1961', '5822 Oakridge Court', '0783257498', 612, 15, 'TRUONGPHONG', null, 108);
 
 insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, vaitro, manql, phg) values ('Kala', 'KALA434', 'F', '28/APR/1951', '07 Forster Center', '0658637716', 250, 12, 'TAICHINH', null, 102);
@@ -189,7 +190,7 @@ insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, 
 
 insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, vaitro, manql, phg) values ('Allan', 'ALLA375', 'M', '8/SEP/1966', '1 Schiller Road', '0239119705', 815, 13, 'NHANVIEN', 'JANN289', 102);
 insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, vaitro, manql, phg) values ('Daniele', 'DANI241', 'F', '10/FEB/1955', '0476 Park Meadow Circle', '0518890441', 173, 20, 'NHANVIEN', 'JANN289', 102);
-insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, vaitro, manql, phg) values ('Angel', 'ANGE326', 'F', '25/OCT/1964', '2264 Sutteridge Way', '0212894480', 198, 17, 'NHANVIEN', 'JANN289', 102);
+--insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, vaitro, manql, phg) values ('Angel', 'ANGE326', 'F', '25/OCT/1964', '2264 Sutteridge Way', '0212894480', 198, 17, 'NHANVIEN', 'JANN289', 102);
 insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, vaitro, manql, phg) values ('Hank', 'HANK130', 'M', '26/JUN/1963', '98078 Del Mar Alley', '0358674340', 478, 14, 'NHANVIEN', 'JANN289', 102);
 insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, vaitro, manql, phg) values ('Abdel', 'ABDE427', 'M', '26/OCT/1971', '1341 Ilene Terrace', '0201872664', 524, 19, 'NHANVIEN', 'JANN289', 102);
 insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, vaitro, manql, phg) values ('Kerrin', 'KERR140', 'F', '12/OCT/1959', '70 Prentice Avenue', '0156947280', 792, 6, 'NHANVIEN', 'JANN289', 102);
@@ -262,7 +263,7 @@ insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, 
 insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, vaitro, manql, phg) values ('Janka', 'JANK144', 'F', '2/APR/1969', '21448 Briar Crest Drive', '0357094691', 954, 15, 'NHANVIEN', 'ABE421', 103);
 insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, vaitro, manql, phg) values ('Sande', 'SAND156', 'F', '27/AUG/1973', '450 Melvin Alley', '0530958215', 333, 10, 'NHANVIEN', 'ABE421', 103);
 insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, vaitro, manql, phg) values ('Cori', 'CORI293', 'M', '28/SEP/1953', '103Summer Ridge Trail', '0673415175', 322, 18, 'NHANVIEN', 'ABE421', 103);
-insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, vaitro, manql, phg) values ('Sula', 'SULA284', 'F', '23/DEC/1990', '38 Badeau Drive', '0919566487', 903, 7, 'NHANVIEN', 'ABE421', 103);
+insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, vaitro, manql, phg) values ('Sula', 'SULA284', 'F', '23/MAR/1990', '38 Badeau Drive', '0919566487', 903, 7, 'NHANVIEN', 'ABE421', 103);
 insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, vaitro, manql, phg) values ('Waring', 'WARI404', 'M', '28/JUL/1969', '98 Sommers Junction', '0459697222', 342, 9, 'NHANVIEN', 'ABE421', 103);
 insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, vaitro, manql, phg) values ('Marillin', 'MARI389', 'F', '29/MAY/1958', '6751 Helena Center', '0751117585', 866, 13, 'NHANVIEN', 'ABE421', 103);
 insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, vaitro, manql, phg) values ('Robbie', 'ROBB322', 'F', '12/JUN/1984', '09394 Cambridge Hill', '0457323220', 221, 17, 'NHANVIEN', 'ABE421', 103);
@@ -273,9 +274,9 @@ insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, 
 insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, vaitro, manql, phg) values ('Laughton', 'LAUG337', 'M', '28/DEC/1998', '748 Parkside Plaza', '0521739995', 894, 15, 'NHANVIEN', 'ADAL197', 104);
 insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, vaitro, manql, phg) values ('Papageno', 'PAPA216', 'M', '17/OCT/1982', '7494 Ridgeview Drive', '0221121508', 918, 19, 'NHANVIEN', 'ADAL197', 104);
 insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, vaitro, manql, phg) values ('Paige', 'PAIG455', 'F', '27/MAR/1979', '4 Logan Terrace', '0537339918', 186, 15, 'NHANVIEN', 'ADAL197', 104);
-insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, vaitro, manql, phg) values ('Barrie', 'BARR182', 'M', '27/MAR/1964', '81370 Lakewood Terrace', '0770651241', 298, 14, 'NHANVIEN', 'ADAL197', 104);
+insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, vaitro, manql, phg) values ('Barrie', 'BARR182', 'M', '20/JAN/1964', '81370 Lakewood Terrace', '0770651241', 298, 14, 'NHANVIEN', 'ADAL197', 104);
 insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, vaitro, manql, phg) values ('Karee', 'KARE411', 'F', '10/AUG/1990', '4898 Dennis Point', '0104594013', 525, 13, 'NHANVIEN', 'ADAL197', 104);
---insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, vaitro, manql, phg) values ('Malinde', 'MALI274', 'F', '19/SEP/1972', '432 Nancy Pass', '0568919870', 617, 10, 'NHANVIEN', 'ADAL197', 104);
+insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, vaitro, manql, phg) values ('Malinde', 'MALI274', 'F', '19/SEP/1972', '432 Nancy Pass', '0568919870', 617, 10, 'NHANVIEN', 'ADAL197', 104);
 insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, vaitro, manql, phg) values ('Artemas', 'ARTE423', 'M', '6/APR/1977', '7 Stang Avenue', '0202258020', 330, 15, 'NHANVIEN', 'ADAL197', 104);
 insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, vaitro, manql, phg) values ('Madelyn', 'MADE272', 'F', '5/FEB/1956', '37 Hudson Trail', '0439325587', 576, 9, 'NHANVIEN', 'ADAL197', 104);
 insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, vaitro, manql, phg) values ('Perri', 'PERR228', 'F', '5/JUL/1982', '869 Memorial Crossing', '0470988886', 207, 7, 'NHANVIEN', 'ADAL197', 104);
@@ -360,7 +361,7 @@ insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, 
 insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, vaitro, manql, phg) values ('Wilbert', 'WILB150', 'M', '1/FEB/1989', '8 Maple Crossing', '0990722575', 526, 12, 'NHANVIEN', 'JUIE149', 106);
 insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, vaitro, manql, phg) values ('Findley', 'FIND384', 'M', '27/JUN/1983', '92 School Drive', '0314272030', 812, 17, 'NHANVIEN', 'JUIE149', 106);
 
-insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, vaitro, manql, phg) values ('Gage', 'GAGE198', 'M', '28/AUG/1995', '46 Chinook Junction', '0271793927', 546, 7, 'NHANVIEN', 'BAUD110', 107);
+insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, vaitro, manql, phg) values ('Gage', 'GAGE198', 'M', '28/AUG/1995', '46 Chinook Junction', '0272179927', 546, 7, 'NHANVIEN', 'BAUD110', 107);
 insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, vaitro, manql, phg) values ('Hilde', 'HILD233', 'F', '9/FEB/1959', '060 Swallow Plaza', '0546591515', 250, 15, 'NHANVIEN', 'BAUD110', 107);
 insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, vaitro, manql, phg) values ('Micheal', 'MICH123', 'M', '21/DEC/1985', '9 Fordem Road', '0471999025', 843, 11, 'NHANVIEN', 'BAUD110', 107);
 insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, vaitro, manql, phg) values ('Brok', 'BROK169', 'M', '5/AUG/1996', '41720 Ramsey Way', '0965518353', 240, 8, 'NHANVIEN', 'BAUD110', 107);
@@ -428,7 +429,7 @@ insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, 
 insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, vaitro, manql, phg) values ('Sarge', 'SARG187', 'M', '19/MAR/1953', '63 Eagan Junction', '0975665724', 895, 11, 'NHANVIEN', 'WEID276', 108);
 insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, vaitro, manql, phg) values ('Mersey', 'MERS188', 'F', '11/APR/1972', '17643 Mayfield Street', '0720261459', 566, 6, 'NHANVIEN', 'WEID276', 108);
 insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, vaitro, manql, phg) values ('Prudence', 'PRUD253', 'F', '10/JAN/1950', '528 Nancy Drive', '0687810857', 526, 8, 'NHANVIEN', 'WEID276', 108);
-insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, vaitro, manql, phg) values ('Augusta', 'AUGU161', 'F', '23/MAY/1975', '872 Anhalt Terrace', '0063941108', 246, 9, 'NHANVIEN', 'WEID276', 108);
+insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, vaitro, manql, phg) values ('Augusta', 'AUGU161', 'F', '23/MAY/1975', '872 Anhalt Terrace', '0606391108', 246, 9, 'NHANVIEN', 'WEID276', 108);
 insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, vaitro, manql, phg) values ('Tonnie', 'TONN315', 'M', '7/JUN/1974', '8657 Chinook Street', '0863843975', 926, 19, 'NHANVIEN', 'WEID276', 108);
 insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, vaitro, manql, phg) values ('Jerrie', 'JERR238', 'F', '27/SEP/1992', '1253 Sage Trail', '0261281295', 598, 19, 'NHANVIEN', 'WEID276', 108);
 insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, vaitro, manql, phg) values ('Iona', 'IONA192', 'F', '24/APR/1997', '67 Crownhardt Lane', '0148874319', 426, 20, 'NHANVIEN', 'WEID276', 108);

@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -17,6 +18,7 @@ namespace UserManagement
     {
         Thread t;
         public static OracleConnection con;
+        public static string user_role;
         public static string conString;
 
         public LoginForm()
@@ -25,13 +27,35 @@ namespace UserManagement
             InitializeComponent();
         }
 
+
         private bool ConnectOracle(string ID, string pass)
         {
-            conString = "Data Source= " + Orcl.hostname + ":" + Orcl.port + "/" + Orcl.servicename + ";User Id=" + ID + ";Password=" + pass + ";";
+            conString = "Data Source= " + Orcl.hostname + ":" + Orcl.port + "/" + Orcl.servicename + ";User Id=" + ID + ";Password=" + pass + ";Pooling=False;";
             con = new OracleConnection(conString);
             try
             {
                 con.Open();
+                // check existing connection
+                OracleCommand cmd = new OracleCommand("select sys_context(\'ctx_nhanvien\', \'con_count\') from dual", con);
+                int count = Convert.ToInt32(cmd.ExecuteScalar());
+                if(count > 1)
+                {
+                    MessageBox.Show("Bạn đã đăng nhập trên một máy khác");
+                    con.Close();
+                    return false;
+                }
+                // check role
+                cmd = new OracleCommand("select count(*) from session_roles where role = \'DBA\'", con);
+                count = Convert.ToInt32(cmd.ExecuteScalar());
+                if (count > 0)
+                {
+                    user_role = "ADMIN";
+                }
+                else
+                {
+                    cmd = new OracleCommand("select sys_context('ctx_nhanvien', 'role') from dual", con);
+                    user_role = cmd.ExecuteScalar().ToString();
+                }
                 return true;
             }
             catch (Exception ex)
@@ -49,8 +73,7 @@ namespace UserManagement
             {
                 //close login form
                 this.Close();
-                Type AdminType = typeof(ManagementUser);
-                t = new Thread(() => Application.Run(new Form1()));
+                t = new Thread(() => Application.Run(new HomeForm()));
                 t.SetApartmentState(ApartmentState.STA);
                 t.Start();
             }
@@ -72,7 +95,7 @@ namespace UserManagement
             string pass = txbPassword.Text;
             bool connected = ConnectOracle(ID, pass);
             OracleCommand cmd = new OracleCommand("select count(*) from session_roles where role = \'DBA\'", con);
-            int count = Convert.ToInt32(cmd.ExecuteScalar());
+            int count = connected ? Convert.ToInt32(cmd.ExecuteScalar()) : 0;
             if (connected && count > 0)
             {
                 //close login form

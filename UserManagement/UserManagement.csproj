@@ -97,11 +97,11 @@
     </Compile>
     <Compile Include="DAO\RoleDAO.cs" />
     <Compile Include="DTO\ObjectDTO.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="HomeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="HomeForm.Designer.cs">
+      <DependentUpon>HomeForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Login\LoginForm.cs">
       <SubType>Form</SubType>
@@ -114,6 +114,9 @@
     <EmbeddedResource Include="Admin\ManagementUser.resx">
       <DependentUpon>ManagementUser.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="HomeForm.resx">
+      <DependentUpon>HomeForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -125,6 +128,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Oracle.DataAccess.Common.Configuration.Section.xsd">
       <SubType>Designer</SubType>
@@ -145,6 +149,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Images\dean.png" />
+    <Content Include="Images\nhansu.png" />
+    <Content Include="Images\phancong.png" />
+    <Content Include="Images\phongban.png" />
+    <Content Include="Images\taichinh.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Text.Json.6.0.1\build\System.Text.Json.targets" Condition="Exists('..\packages\System.Text.Json.6.0.1\build\System.Text.Json.targets')" />
