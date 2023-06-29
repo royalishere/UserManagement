@@ -1,25 +1,3 @@
--- TAO USER 
--- nhanvien
-execute create_user('KERR264','123456', NULL);
--- qltructiep
-exec create_user('ABE421', '123456', NULL); 
--- truongphong
-exec create_user('LEIL369', '123456', NULL);
-exec create_user('BARB396', '123456', NULL);
-exec create_user('MAUR325', '123456', NULL);
-exec create_user('GARA176', '123456', NULL);
-exec create_user('ANGE326', '123456', NULL);
--- taichinh
-exec create_user('TIMM362', '123456', NULL); 
--- nhansu
-exec create_user('RIAN234 ', '123456', NULL); 
--- truongdean
-exec create_user('BART317', '123456', NULL); 
--- bangd
-exec create_user('LARI250', '123456', NULL); 
-exec create_user('KAYC433', '123456', NULL); 
-exec create_user('RICC407', '123456', NULL); 
-
 -- CONTEXT APPLICATION
 CREATE OR REPLACE CONTEXT CTX_NHANVIEN USING PKG_NHANVIEN;
 /
@@ -95,6 +73,29 @@ DECODE(MANV, USER, LUONG, NULL) LUONG,
 DECODE(MANV, USER, PHUCAP, NULL) PHUCAP, 
 VAITRO, MANQL, PHG FROM ADMIN.NHANVIEN;
 /
+CREATE OR REPLACE VIEW V_NHANSU_NHANVIEN AS SELECT * FROM ADMIN.NHANVIEN;
+/
+-- TAO USER 
+-- nhanvien
+execute create_user('KERR264','123456', NULL);
+-- qltructiep
+exec create_user('ABE421', '123456', NULL); 
+-- truongphong
+exec create_user('LEIL369', '123456', NULL);
+exec create_user('BARB396', '123456', NULL);
+exec create_user('MAUR325', '123456', NULL);
+exec create_user('GARA176', '123456', NULL);
+exec create_user('ANGE326', '123456', NULL);
+-- taichinh
+exec create_user('TIMM362', '123456', NULL); 
+-- nhansu
+exec create_user('RIAN234 ', '123456', NULL); 
+-- truongdean
+exec create_user('BART317', '123456', NULL); 
+-- bangd
+exec create_user('LARI250', '123456', NULL); 
+exec create_user('KAYC433', '123456', NULL); 
+exec create_user('RICC407', '123456', NULL);
 -- Chính sách 2: Mỗi nhân viên có thể xem dòng dữ liệu trên table hay view dựa trên vai trò của mình
 CREATE OR REPLACE FUNCTION F_NHANVIEN
         (P_SCHEMA VARCHAR2,
@@ -137,8 +138,6 @@ BEGIN
 END;
 /
 -- Nhân sự insert, update
-CREATE OR REPLACE VIEW V_NHANSU_NHANVIEN AS SELECT * FROM ADMIN.NHANVIEN;
-/
 -- Cài trigger cho insert, update
 CREATE OR REPLACE TRIGGER TRG_NHANSU_NHANVIEN
 INSTEAD OF INSERT OR UPDATE OR DELETE
@@ -290,4 +289,4 @@ BEGIN
         STATEMENT_TYPES => 'INSERT, DELETE, UPDATE',
         UPDATE_CHECK => TRUE);
 END;
-/
+/ 

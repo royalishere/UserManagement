@@ -794,7 +794,7 @@ END;
 BEGIN
         DBMS_FGA.DROP_POLICY (
         OBJECT_SCHEMA => 'admin',
-        OBJECT_NAME => 'nhanvien',
+        OBJECT_NAME => 'phancong',
         POLICY_NAME => 'audit_policy_phancong'
         );
 EXCEPTION WHEN OTHERS THEN

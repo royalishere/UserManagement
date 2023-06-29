@@ -643,6 +643,8 @@ BEGIN
                 EXECUTE IMMEDIATE(STRSQL);
                 STRSQL := 'grant select on admin.dean to ' || USR;
                 EXECUTE IMMEDIATE(STRSQL);
+                STRSQL := 'grant select on admin.phongban to ' || USR;             
+                EXECUTE IMMEDIATE(STRSQL);
                 STRSQL := 'grant select on admin.thongbao to ' || USR;
                 EXECUTE IMMEDIATE(STRSQL);
 
@@ -659,6 +661,8 @@ BEGIN
                 EXECUTE IMMEDIATE(STRSQL);
                 STRSQL := 'grant update (tennv, phai, ngaysinh, diachi, sodt, vaitro, manql, phg) on v_nhansu_nhanvien to ' || USR;
                 EXECUTE IMMEDIATE(STRSQL);
+                STRSQL := 'grant insert, update on phongban to ' || USER;
+                EXECUTE IMMEDIATE (STRSQL);
         END LOOP;
         CLOSE CUR;
          -- TAI CHINH
