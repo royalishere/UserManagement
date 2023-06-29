@@ -1,6 +1,6 @@
 
 -- =============================   YÊU CẦU 2   =================================
--- I. Tạo user NAM - thực hiện xử lý mã hóa
+ I. Tạo user NAM - thực hiện xử lý mã hóa
 CREATE USER NAM IDENTIFIED BY 123456;
 ALTER USER NAM
 DEFAULT TABLESPACE "USERS"
@@ -286,14 +286,13 @@ ALTER TABLE ADMIN.PHONGBAN
 ALTER TABLE ADMIN.PHANCONG
     ADD CONSTRAINT PHANCONG_FK_NV FOREIGN KEY (MANV) REFERENCES ADMIN.NHANVIEN(MANV);
 /
-DROP TABLE TEMP;
 -- Thay khóa đồng loạt sau một thời gian - Chiến lược 3-6 tháng thay khóa một lần
 CREATE OR REPLACE PACKAGE CRYPT_MANAGE_KEY
 AS
         PROCEDURE SINHKHOA;
         PROCEDURE THAYKHOA;
 END;
-
+/
 CREATE OR REPLACE PACKAGE BODY CRYPT_MANAGE_KEY
 AS        
         PROCEDURE SINHKHOA

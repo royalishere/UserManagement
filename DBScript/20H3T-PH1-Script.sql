@@ -1,7 +1,8 @@
---create ADMIN user
+----create ADMIN user
 CREATE USER ADMIN IDENTIFIED BY 123456;
 GRANT CONNECT, RESOURCE, DBA TO ADMIN;
 GRANT ALL PRIVILEGES TO ADMIN;
+GRANT SELECT ON SYS.V_$SESSION TO ADMIN;
 ALTER USER ADMIN DEFAULT ROLE ALL;
 
 --------------------RUN ONCE-TIME TU DAY------------------------
@@ -98,6 +99,7 @@ END;
 CREATE TABLE THONGBAO (
         NOIDUNG NVARCHAR2(2000)
 );
+/
 -- insert data into tables
 -- NHANVIEN
 insert into NHANVIEN (tennv, manv, phai, ngaysinh, diachi, sodt, luong, phucap, vaitro, manql, phg) values ('Kaycee', 'KAYC433', 'F', '26/SEP/1981', '6 Gina Court', '0689666776', 834, 15, 'BANGD', null, 101);
