@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Oracle.ManagedDataAccess.Client;
 using System.Threading;
+using UserManagement.Features;
 
 namespace UserManagement
 {
@@ -27,6 +28,10 @@ namespace UserManagement
             {
                 LoadInfo();
                 UnlockRoleTools();
+            }
+            else
+            {
+                LoadAnnouncement();
             }
         }
 
@@ -51,7 +56,7 @@ namespace UserManagement
                     {
                         gioitinh_tb.Text = "Nữ";
                     }
-                    ngaysinh_tb.Text = reader.GetString(3);
+                    birthday_dpk.Value = reader.GetDateTime(3);
                     diachi_tb.Text = reader.GetString(4);
                     sdt_tb.Text = reader.GetString(5);
                     luong_tb.Text = reader.GetString(6) + " $";
@@ -74,9 +79,31 @@ namespace UserManagement
             
         }
 
+        private void LoadAnnouncement()
+        {
+            string cmd = "select * from admin.thongbao";
+            OracleCommand oracmd = new OracleCommand(cmd, LoginForm.con);
+            try
+            {
+                // load date into thongbaodg
+                DataTable dt = new DataTable();
+                dt.Load(oracmd.ExecuteReader());
+                dgthongbao.DataSource = dt;
+            }
+            catch
+            {
+                MessageBox.Show("Load dữ liệu không thành công");
+            }
+            if(LoginForm.user_role == "ADMIN")
+            {
+                add_btn.Visible = true;
+                noidung_tb.Visible = true;
+            }
+        }
+
         private void updateInfo_Click(object sender, EventArgs e)
         {
-            string ngaysinh = ngaysinh_tb.Text;
+            string ngaysinh = birthday_dpk.Value.ToShortDateString();
             string sdt = sdt_tb.Text;
             string diachi = diachi_tb.Text;
 
@@ -122,6 +149,56 @@ namespace UserManagement
             t = new Thread(() => Application.Run(new LoginForm()));
             t.SetApartmentState(ApartmentState.STA);
             t.Start();
+        }
+
+        private void phongban_btn_Click(object sender, EventArgs e)
+        {
+            DepartmentForm departmentForm = DepartmentForm.GetInstance();
+            departmentForm.Show();
+        }
+
+        private void dean_btn_Click(object sender, EventArgs e)
+        {
+            ProjectForm projectForm = ProjectForm.GetInstance();
+            projectForm.Show();
+        }
+
+        private void phancong_btn_Click(object sender, EventArgs e)
+        {
+            AssignmentForm assignmentForm = AssignmentForm.GetInstance();
+            assignmentForm.Show();
+        }
+
+        private void nhansu_btn_Click(object sender, EventArgs e)
+        {
+            HRForm hRForm = HRForm.GetInstance();
+            hRForm.Show();
+        }
+
+        private void taichinh_btn_Click(object sender, EventArgs e)
+        {
+            FinanceForm financeForm = FinanceForm.GetInstance();
+            financeForm.Show();
+        }
+
+        private void add_btn_Click(object sender, EventArgs e)
+        {
+            string noidung = noidung_tb.Text;
+            string cmd = "insert into admin.thongbao values ('" + noidung + "')";
+            try
+            {
+                OracleCommand oracmd = new OracleCommand(cmd, LoginForm.con);
+                oracmd.ExecuteNonQuery();
+                MessageBox.Show("Thêm thông báo thành công");
+                cmd = "update admin.thongbao set rowlabel = char_to_label('ESBD', 'NV') where noidung = '" + noidung +"'";
+                oracmd = new OracleCommand(cmd, LoginForm.con);
+                oracmd.ExecuteNonQuery();
+                LoadAnnouncement();
+            }
+            catch
+            {
+                MessageBox.Show("Thêm thông báo không thành công");
+            }
         }
     }
 }

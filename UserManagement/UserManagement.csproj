@@ -97,11 +97,41 @@
     </Compile>
     <Compile Include="DAO\RoleDAO.cs" />
     <Compile Include="DTO\ObjectDTO.cs" />
-    <Compile Include="HomeForm.cs">
+    <Compile Include="Features\AssignmentForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="HomeForm.Designer.cs">
+    <Compile Include="Features\AssignmentForm.Designer.cs">
+      <DependentUpon>AssignmentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\DepartmentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Features\DepartmentForm.Designer.cs">
+      <DependentUpon>DepartmentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\FinanceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Features\FinanceForm.Designer.cs">
+      <DependentUpon>FinanceForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\HomeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Features\HomeForm.Designer.cs">
       <DependentUpon>HomeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\HRForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Features\HRForm.Designer.cs">
+      <DependentUpon>HRForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\ProjectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Features\ProjectForm.Designer.cs">
+      <DependentUpon>ProjectForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Login\LoginForm.cs">
       <SubType>Form</SubType>
@@ -114,8 +144,23 @@
     <EmbeddedResource Include="Admin\ManagementUser.resx">
       <DependentUpon>ManagementUser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="HomeForm.resx">
+    <EmbeddedResource Include="Features\AssignmentForm.resx">
+      <DependentUpon>AssignmentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\DepartmentForm.resx">
+      <DependentUpon>DepartmentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\FinanceForm.resx">
+      <DependentUpon>FinanceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\HomeForm.resx">
       <DependentUpon>HomeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\HRForm.resx">
+      <DependentUpon>HRForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\ProjectForm.resx">
+      <DependentUpon>ProjectForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -152,6 +197,8 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <None Include="Images\background.jpg" />
+    <None Include="Images\background2.jpg" />
     <Content Include="Images\dean.png" />
     <Content Include="Images\nhansu.png" />
     <Content Include="Images\phancong.png" />

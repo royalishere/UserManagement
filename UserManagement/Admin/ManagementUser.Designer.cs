@@ -28,11 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManagementUser));
             this.tabctrl = new System.Windows.Forms.TabControl();
             this.tpTable = new System.Windows.Forms.TabPage();
             this.dg_system = new System.Windows.Forms.DataGridView();
@@ -87,10 +90,10 @@
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.tpRole = new System.Windows.Forms.TabPage();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.dtgvRolePrivs = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dtgvNhanVien = new System.Windows.Forms.DataGridView();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.dtgvRolePrivs = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.fpn_role = new System.Windows.Forms.FlowLayoutPanel();
@@ -121,6 +124,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txbRoleName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.AuditTab = new System.Windows.Forms.TabPage();
+            this.label25 = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.dgaudit = new System.Windows.Forms.DataGridView();
             this.tabctrl.SuspendLayout();
             this.tpTable.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dg_system)).BeginInit();
@@ -134,11 +141,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.dg_user)).BeginInit();
             this.panel5.SuspendLayout();
             this.tpRole.SuspendLayout();
+            this.panel10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvRolePrivs)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvNhanVien)).BeginInit();
-            this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgvRolePrivs)).BeginInit();
             this.panel2.SuspendLayout();
+            this.AuditTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgaudit)).BeginInit();
             this.SuspendLayout();
             // 
             // tabctrl
@@ -146,6 +155,7 @@
             this.tabctrl.Controls.Add(this.tpTable);
             this.tabctrl.Controls.Add(this.tpUser);
             this.tabctrl.Controls.Add(this.tpRole);
+            this.tabctrl.Controls.Add(this.AuditTab);
             this.tabctrl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabctrl.Location = new System.Drawing.Point(0, 0);
             this.tabctrl.Margin = new System.Windows.Forms.Padding(2);
@@ -157,6 +167,7 @@
             // 
             // tpTable
             // 
+            this.tpTable.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tpTable.Controls.Add(this.dg_system);
             this.tpTable.Controls.Add(this.panel3);
             this.tpTable.Location = new System.Drawing.Point(4, 22);
@@ -173,6 +184,15 @@
             this.dg_system.AllowUserToAddRows = false;
             this.dg_system.AllowUserToDeleteRows = false;
             this.dg_system.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dg_system.BackgroundColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dg_system.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dg_system.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dg_system.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dg_system.Location = new System.Drawing.Point(2, 267);
@@ -180,13 +200,12 @@
             this.dg_system.Name = "dg_system";
             this.dg_system.ReadOnly = true;
             this.dg_system.RowHeadersVisible = false;
-            this.dg_system.Size = new System.Drawing.Size(1338, 434);
+            this.dg_system.Size = new System.Drawing.Size(1336, 432);
             this.dg_system.TabIndex = 3;
             this.dg_system.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_system_CellClick);
             // 
             // panel3
             // 
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.logout_btn);
             this.panel3.Controls.Add(this.label24);
             this.panel3.Controls.Add(this.txb_viewname);
@@ -210,7 +229,7 @@
             this.panel3.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.panel3.Location = new System.Drawing.Point(2, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1338, 265);
+            this.panel3.Size = new System.Drawing.Size(1336, 265);
             this.panel3.TabIndex = 2;
             // 
             // logout_btn
@@ -383,11 +402,11 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Times New Roman", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label11.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label11.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.label11.Location = new System.Drawing.Point(405, 14);
+            this.label11.Location = new System.Drawing.Point(442, 14);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(485, 36);
+            this.label11.Size = new System.Drawing.Size(415, 31);
             this.label11.TabIndex = 2;
             this.label11.Text = "DANH SÁCH BẢNG HỆ THỐNG";
             // 
@@ -412,6 +431,7 @@
             // 
             // tpUser
             // 
+            this.tpUser.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tpUser.Controls.Add(this.panel7);
             this.tpUser.Controls.Add(this.panel8);
             this.tpUser.Controls.Add(this.panel6);
@@ -420,7 +440,7 @@
             this.tpUser.Margin = new System.Windows.Forms.Padding(2);
             this.tpUser.Name = "tpUser";
             this.tpUser.Padding = new System.Windows.Forms.Padding(2);
-            this.tpUser.Size = new System.Drawing.Size(978, 703);
+            this.tpUser.Size = new System.Drawing.Size(1342, 703);
             this.tpUser.TabIndex = 1;
             this.tpUser.Text = "NGƯỜI DÙNG";
             this.tpUser.UseVisualStyleBackColor = true;
@@ -431,25 +451,26 @@
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel7.Location = new System.Drawing.Point(460, 466);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(516, 235);
+            this.panel7.Size = new System.Drawing.Size(878, 233);
             this.panel7.TabIndex = 4;
             // 
             // dg_usercolprivs
             // 
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dg_usercolprivs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            this.dg_usercolprivs.BackgroundColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dg_usercolprivs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dg_usercolprivs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dg_usercolprivs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dg_usercolprivs.Location = new System.Drawing.Point(0, 0);
             this.dg_usercolprivs.Name = "dg_usercolprivs";
             this.dg_usercolprivs.RowHeadersVisible = false;
-            this.dg_usercolprivs.Size = new System.Drawing.Size(516, 235);
+            this.dg_usercolprivs.Size = new System.Drawing.Size(878, 233);
             this.dg_usercolprivs.TabIndex = 0;
             // 
             // panel8
@@ -458,25 +479,26 @@
             this.panel8.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel8.Location = new System.Drawing.Point(460, 230);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(516, 236);
+            this.panel8.Size = new System.Drawing.Size(878, 236);
             this.panel8.TabIndex = 3;
             // 
             // dg_usertabprivs
             // 
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dg_usertabprivs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            this.dg_usertabprivs.BackgroundColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dg_usertabprivs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dg_usertabprivs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dg_usertabprivs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dg_usertabprivs.Location = new System.Drawing.Point(0, 0);
             this.dg_usertabprivs.Name = "dg_usertabprivs";
             this.dg_usertabprivs.RowHeadersVisible = false;
-            this.dg_usertabprivs.Size = new System.Drawing.Size(516, 236);
+            this.dg_usertabprivs.Size = new System.Drawing.Size(878, 236);
             this.dg_usertabprivs.TabIndex = 0;
             // 
             // panel6
@@ -485,7 +507,7 @@
             this.panel6.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel6.Location = new System.Drawing.Point(2, 230);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(458, 471);
+            this.panel6.Size = new System.Drawing.Size(458, 469);
             this.panel6.TabIndex = 1;
             // 
             // dg_user
@@ -493,27 +515,27 @@
             this.dg_user.AllowUserToAddRows = false;
             this.dg_user.AllowUserToDeleteRows = false;
             this.dg_user.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dg_user.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle18;
+            this.dg_user.BackgroundColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dg_user.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dg_user.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dg_user.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dg_user.Location = new System.Drawing.Point(0, 0);
             this.dg_user.Name = "dg_user";
             this.dg_user.ReadOnly = true;
             this.dg_user.RowHeadersVisible = false;
-            this.dg_user.Size = new System.Drawing.Size(458, 471);
+            this.dg_user.Size = new System.Drawing.Size(458, 469);
             this.dg_user.TabIndex = 0;
             this.dg_user.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_user_CellClick);
             // 
             // panel5
             // 
-            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel5.Controls.Add(this.label22);
             this.panel5.Controls.Add(this.label21);
             this.panel5.Controls.Add(this.textBox3);
@@ -539,14 +561,14 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Location = new System.Drawing.Point(2, 2);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(974, 228);
+            this.panel5.Size = new System.Drawing.Size(1336, 228);
             this.panel5.TabIndex = 0;
             // 
             // label22
             // 
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label22.Location = new System.Drawing.Point(951, 70);
+            this.label22.Location = new System.Drawing.Point(1157, 50);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(104, 15);
             this.label22.TabIndex = 45;
@@ -577,7 +599,7 @@
             this.fpn_user.BackColor = System.Drawing.Color.Gainsboro;
             this.fpn_user.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.fpn_user.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.fpn_user.Location = new System.Drawing.Point(1071, 69);
+            this.fpn_user.Location = new System.Drawing.Point(1017, 69);
             this.fpn_user.Name = "fpn_user";
             this.fpn_user.Size = new System.Drawing.Size(244, 121);
             this.fpn_user.TabIndex = 42;
@@ -588,7 +610,7 @@
             this.revokebtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.revokebtn.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.revokebtn.ForeColor = System.Drawing.Color.Red;
-            this.revokebtn.Location = new System.Drawing.Point(619, 171);
+            this.revokebtn.Location = new System.Drawing.Point(646, 171);
             this.revokebtn.Name = "revokebtn";
             this.revokebtn.Size = new System.Drawing.Size(70, 26);
             this.revokebtn.TabIndex = 41;
@@ -602,7 +624,7 @@
             this.grantbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.grantbtn.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.grantbtn.ForeColor = System.Drawing.Color.DarkCyan;
-            this.grantbtn.Location = new System.Drawing.Point(521, 171);
+            this.grantbtn.Location = new System.Drawing.Point(548, 171);
             this.grantbtn.Name = "grantbtn";
             this.grantbtn.Size = new System.Drawing.Size(70, 26);
             this.grantbtn.TabIndex = 40;
@@ -615,7 +637,7 @@
             this.grant_optcb.AutoSize = true;
             this.grant_optcb.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.grant_optcb.ForeColor = System.Drawing.Color.DarkCyan;
-            this.grant_optcb.Location = new System.Drawing.Point(529, 142);
+            this.grant_optcb.Location = new System.Drawing.Point(556, 142);
             this.grant_optcb.Margin = new System.Windows.Forms.Padding(2);
             this.grant_optcb.Name = "grant_optcb";
             this.grant_optcb.Size = new System.Drawing.Size(159, 19);
@@ -627,7 +649,7 @@
             // 
             this.delcb.AutoSize = true;
             this.delcb.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.delcb.Location = new System.Drawing.Point(609, 106);
+            this.delcb.Location = new System.Drawing.Point(636, 106);
             this.delcb.Margin = new System.Windows.Forms.Padding(2);
             this.delcb.Name = "delcb";
             this.delcb.Size = new System.Drawing.Size(61, 19);
@@ -639,7 +661,7 @@
             // 
             this.updatecb.AutoSize = true;
             this.updatecb.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.updatecb.Location = new System.Drawing.Point(530, 106);
+            this.updatecb.Location = new System.Drawing.Point(557, 106);
             this.updatecb.Margin = new System.Windows.Forms.Padding(2);
             this.updatecb.Name = "updatecb";
             this.updatecb.Size = new System.Drawing.Size(62, 19);
@@ -651,7 +673,7 @@
             // 
             this.insertcb.AutoSize = true;
             this.insertcb.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.insertcb.Location = new System.Drawing.Point(609, 69);
+            this.insertcb.Location = new System.Drawing.Point(636, 69);
             this.insertcb.Margin = new System.Windows.Forms.Padding(2);
             this.insertcb.Name = "insertcb";
             this.insertcb.Size = new System.Drawing.Size(59, 19);
@@ -663,7 +685,7 @@
             // 
             this.selectcb.AutoSize = true;
             this.selectcb.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.selectcb.Location = new System.Drawing.Point(530, 69);
+            this.selectcb.Location = new System.Drawing.Point(557, 69);
             this.selectcb.Margin = new System.Windows.Forms.Padding(2);
             this.selectcb.Name = "selectcb";
             this.selectcb.Size = new System.Drawing.Size(60, 19);
@@ -675,7 +697,7 @@
             // 
             this.cb_tables.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cb_tables.FormattingEnabled = true;
-            this.cb_tables.Location = new System.Drawing.Point(803, 68);
+            this.cb_tables.Location = new System.Drawing.Point(830, 68);
             this.cb_tables.Name = "cb_tables";
             this.cb_tables.Size = new System.Drawing.Size(115, 23);
             this.cb_tables.TabIndex = 17;
@@ -685,7 +707,7 @@
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label20.Location = new System.Drawing.Point(687, 70);
+            this.label20.Location = new System.Drawing.Point(714, 70);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(110, 15);
             this.label20.TabIndex = 18;
@@ -771,7 +793,8 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label17.Location = new System.Drawing.Point(691, 24);
+            this.label17.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.label17.Location = new System.Drawing.Point(676, 16);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(409, 26);
             this.label17.TabIndex = 1;
@@ -781,7 +804,8 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label16.Location = new System.Drawing.Point(6, 24);
+            this.label16.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.label16.Location = new System.Drawing.Point(6, 16);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(452, 26);
             this.label16.TabIndex = 0;
@@ -789,26 +813,58 @@
             // 
             // tpRole
             // 
+            this.tpRole.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tpRole.Controls.Add(this.panel10);
             this.tpRole.Controls.Add(this.panel1);
-            this.tpRole.Controls.Add(this.panel4);
             this.tpRole.Controls.Add(this.panel2);
             this.tpRole.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tpRole.Location = new System.Drawing.Point(4, 22);
             this.tpRole.Margin = new System.Windows.Forms.Padding(0);
             this.tpRole.Name = "tpRole";
-            this.tpRole.Size = new System.Drawing.Size(978, 703);
+            this.tpRole.Size = new System.Drawing.Size(1342, 703);
             this.tpRole.TabIndex = 2;
             this.tpRole.Text = "VAI TRÒ";
             this.tpRole.UseVisualStyleBackColor = true;
+            // 
+            // panel10
+            // 
+            this.panel10.Controls.Add(this.dtgvRolePrivs);
+            this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel10.Location = new System.Drawing.Point(530, 212);
+            this.panel10.Margin = new System.Windows.Forms.Padding(2);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(810, 489);
+            this.panel10.TabIndex = 21;
+            // 
+            // dtgvRolePrivs
+            // 
+            this.dtgvRolePrivs.AllowUserToAddRows = false;
+            this.dtgvRolePrivs.AllowUserToDeleteRows = false;
+            this.dtgvRolePrivs.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtgvRolePrivs.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dtgvRolePrivs.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
+            this.dtgvRolePrivs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgvRolePrivs.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dtgvRolePrivs.Location = new System.Drawing.Point(0, 0);
+            this.dtgvRolePrivs.Margin = new System.Windows.Forms.Padding(0);
+            this.dtgvRolePrivs.Name = "dtgvRolePrivs";
+            this.dtgvRolePrivs.ReadOnly = true;
+            this.dtgvRolePrivs.RowHeadersVisible = false;
+            this.dtgvRolePrivs.RowHeadersWidth = 51;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.dtgvRolePrivs.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.dtgvRolePrivs.RowTemplate.Height = 24;
+            this.dtgvRolePrivs.Size = new System.Drawing.Size(810, 489);
+            this.dtgvRolePrivs.TabIndex = 1;
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.dtgvNhanVien);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 207);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Location = new System.Drawing.Point(0, 212);
+            this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(533, 496);
+            this.panel1.Size = new System.Drawing.Size(530, 489);
             this.panel1.TabIndex = 19;
             // 
             // dtgvNhanVien
@@ -816,6 +872,7 @@
             this.dtgvNhanVien.AllowUserToAddRows = false;
             this.dtgvNhanVien.AllowUserToDeleteRows = false;
             this.dtgvNhanVien.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtgvNhanVien.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dtgvNhanVien.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             this.dtgvNhanVien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgvNhanVien.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -825,46 +882,15 @@
             this.dtgvNhanVien.ReadOnly = true;
             this.dtgvNhanVien.RowHeadersVisible = false;
             this.dtgvNhanVien.RowHeadersWidth = 51;
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.dtgvNhanVien.RowsDefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.dtgvNhanVien.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dtgvNhanVien.RowTemplate.Height = 24;
-            this.dtgvNhanVien.Size = new System.Drawing.Size(533, 496);
+            this.dtgvNhanVien.Size = new System.Drawing.Size(530, 489);
             this.dtgvNhanVien.TabIndex = 0;
             this.dtgvNhanVien.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvNhanVien_CellClick);
             // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.dtgvRolePrivs);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel4.Location = new System.Drawing.Point(173, 207);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(805, 496);
-            this.panel4.TabIndex = 18;
-            // 
-            // dtgvRolePrivs
-            // 
-            this.dtgvRolePrivs.AllowUserToAddRows = false;
-            this.dtgvRolePrivs.AllowUserToDeleteRows = false;
-            this.dtgvRolePrivs.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dtgvRolePrivs.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            this.dtgvRolePrivs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvRolePrivs.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dtgvRolePrivs.Location = new System.Drawing.Point(0, 0);
-            this.dtgvRolePrivs.Margin = new System.Windows.Forms.Padding(2);
-            this.dtgvRolePrivs.Name = "dtgvRolePrivs";
-            this.dtgvRolePrivs.ReadOnly = true;
-            this.dtgvRolePrivs.RowHeadersVisible = false;
-            this.dtgvRolePrivs.RowHeadersWidth = 51;
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.dtgvRolePrivs.RowsDefaultCellStyle = dataGridViewCellStyle20;
-            this.dtgvRolePrivs.RowTemplate.Height = 24;
-            this.dtgvRolePrivs.Size = new System.Drawing.Size(805, 496);
-            this.dtgvRolePrivs.TabIndex = 1;
-            // 
             // panel2
             // 
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.fpn_role);
             this.panel2.Controls.Add(this.bntAddUserToRole);
@@ -899,14 +925,14 @@
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(978, 207);
+            this.panel2.Size = new System.Drawing.Size(1340, 212);
             this.panel2.TabIndex = 11;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label6.Location = new System.Drawing.Point(1064, 46);
+            this.label6.Location = new System.Drawing.Point(1204, 45);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(104, 15);
             this.label6.TabIndex = 47;
@@ -927,7 +953,7 @@
             // 
             this.bntAddUserToRole.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bntAddUserToRole.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.bntAddUserToRole.Location = new System.Drawing.Point(552, 167);
+            this.bntAddUserToRole.Location = new System.Drawing.Point(559, 167);
             this.bntAddUserToRole.Margin = new System.Windows.Forms.Padding(2);
             this.bntAddUserToRole.Name = "bntAddUserToRole";
             this.bntAddUserToRole.Size = new System.Drawing.Size(70, 26);
@@ -982,6 +1008,7 @@
             // 
             // txbObjectType
             // 
+            this.txbObjectType.Enabled = false;
             this.txbObjectType.Location = new System.Drawing.Point(915, 103);
             this.txbObjectType.Margin = new System.Windows.Forms.Padding(2);
             this.txbObjectType.Name = "txbObjectType";
@@ -1115,12 +1142,13 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(773, 17);
+            this.label8.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.label8.Location = new System.Drawing.Point(759, 14);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(297, 26);
+            this.label8.Size = new System.Drawing.Size(376, 26);
             this.label8.TabIndex = 26;
-            this.label8.Text = "Danh Sách Quyền Của Role";
+            this.label8.Text = "DANH SÁCH QUYỀN CỦA ROLE";
             // 
             // bntCreateRole
             // 
@@ -1226,12 +1254,75 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(148, 15);
+            this.label4.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.label4.Location = new System.Drawing.Point(147, 14);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(175, 26);
+            this.label4.Size = new System.Drawing.Size(228, 26);
             this.label4.TabIndex = 6;
-            this.label4.Text = "Danh Sách Role";
+            this.label4.Text = "DANH SÁCH ROLE";
+            // 
+            // AuditTab
+            // 
+            this.AuditTab.Controls.Add(this.label25);
+            this.AuditTab.Controls.Add(this.checkBox1);
+            this.AuditTab.Controls.Add(this.dgaudit);
+            this.AuditTab.Location = new System.Drawing.Point(4, 22);
+            this.AuditTab.Name = "AuditTab";
+            this.AuditTab.Padding = new System.Windows.Forms.Padding(3);
+            this.AuditTab.Size = new System.Drawing.Size(1342, 703);
+            this.AuditTab.TabIndex = 3;
+            this.AuditTab.Text = "AUDIT LOG$";
+            this.AuditTab.UseVisualStyleBackColor = true;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.label25.Location = new System.Drawing.Point(530, 19);
+            this.label25.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(323, 26);
+            this.label25.TabIndex = 7;
+            this.label25.Text = "BẢNG AUDIT NGƯỜI DÙNG";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.checkBox1.Location = new System.Drawing.Point(8, 38);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(121, 23);
+            this.checkBox1.TabIndex = 1;
+            this.checkBox1.Text = "FGA POLICY";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // dgaudit
+            // 
+            this.dgaudit.AllowUserToAddRows = false;
+            this.dgaudit.AllowUserToDeleteRows = false;
+            this.dgaudit.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgaudit.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgaudit.BackgroundColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgaudit.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.dgaudit.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgaudit.Location = new System.Drawing.Point(8, 81);
+            this.dgaudit.Name = "dgaudit";
+            this.dgaudit.ReadOnly = true;
+            this.dgaudit.RowHeadersVisible = false;
+            this.dgaudit.Size = new System.Drawing.Size(1326, 614);
+            this.dgaudit.TabIndex = 0;
             // 
             // ManagementUser
             // 
@@ -1239,6 +1330,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1350, 729);
             this.Controls.Add(this.tabctrl);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ManagementUser";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -1259,12 +1351,15 @@
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.tpRole.ResumeLayout(false);
+            this.panel10.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvRolePrivs)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgvNhanVien)).EndInit();
-            this.panel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dtgvRolePrivs)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.AuditTab.ResumeLayout(false);
+            this.AuditTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgaudit)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1286,7 +1381,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txbRoleName;
-        private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button bntAddUserToRole;
         private System.Windows.Forms.CheckBox ckbGrantable;
         private System.Windows.Forms.Button bntShowRole;
@@ -1304,7 +1398,6 @@
         private System.Windows.Forms.ComboBox cbObjectName;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.DataGridView dtgvRolePrivs;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView dtgvNhanVien;
         private System.Windows.Forms.DataGridView dg_system;
@@ -1359,5 +1452,11 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.FlowLayoutPanel fpn_role;
         private System.Windows.Forms.Button logout_btn;
+        private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.DataGridView dtgvRolePrivs;
+        private System.Windows.Forms.TabPage AuditTab;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.DataGridView dgaudit;
     }
 }

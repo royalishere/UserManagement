@@ -110,3 +110,8 @@ C:\Users\hoang\Desktop\UserManagement\UserManagement\obj\Debug\UserManagement.cs
 C:\Users\hoang\Desktop\UserManagement\UserManagement\obj\Debug\UserManagement.exe
 C:\Users\hoang\Desktop\UserManagement\UserManagement\obj\Debug\UserManagement.pdb
 C:\Users\hoang\Desktop\UserManagement\UserManagement\obj\Debug\UserManagement.HomeForm.resources
+C:\Users\hoang\Desktop\UserManagement\UserManagement\obj\Debug\UserManagement.Features.DepartmentForm.resources
+C:\Users\hoang\Desktop\UserManagement\UserManagement\obj\Debug\UserManagement.Features.ProjectForm.resources
+C:\Users\hoang\Desktop\UserManagement\UserManagement\obj\Debug\UserManagement.Features.AssignmentForm.resources
+C:\Users\hoang\Desktop\UserManagement\UserManagement\obj\Debug\UserManagement.Features.HRForm.resources
+C:\Users\hoang\Desktop\UserManagement\UserManagement\obj\Debug\UserManagement.Features.FinanceForm.resources

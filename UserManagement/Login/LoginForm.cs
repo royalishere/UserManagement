@@ -30,7 +30,7 @@ namespace UserManagement
 
         private bool ConnectOracle(string ID, string pass)
         {
-            conString = "Data Source= " + Orcl.hostname + ":" + Orcl.port + "/" + Orcl.servicename + ";User Id=" + ID + ";Password=" + pass + ";Pooling=False;";
+            conString = "Data Source= " + Orcl.hostname + ":" + Orcl.port + "/" + Orcl.servicename + ";User Id=" + ID + ";Password=" + pass + ";Pooling=False;"; // k dung connection pooling
             con = new OracleConnection(conString);
             try
             {

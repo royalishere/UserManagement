@@ -254,116 +254,40 @@ declare
         l_phucap VARCHAR2(30);
 begin        
         -- Cập nhật ngày sinh
+        -- B1: Lấy key ra
+        select maquocgia into l_key  from nam.quocgia where manv = :old.manv;
+        -- B2: Tính key xor cũ <=> (ngày sinh cũ + key cũ)
+        l_key_xor := UTL_RAW.BIT_XOR (l_key, UTL_RAW.cast_to_raw(to_char(extract(day from :old.ngaysinh ))));
+        l_luong := crypt_util.crypt(:old.luong, l_key_xor);
+        l_phucap := crypt_util.crypt(:old.phucap, l_key_xor);
         if (:new.ngaysinh != :old.ngaysinh) then
-                -- B1: Lấy key ra
-                select maquocgia into l_key  from nam.quocgia where manv = :old.manv;
-                        
-                -- B2: Tính key xor cũ <=> (ngày sinh cũ + key cũ)
-                l_key_xor := UTL_RAW.BIT_XOR (l_key, UTL_RAW.cast_to_raw(to_char(extract(day from :old.ngaysinh ))));
-                
                 -- B3: Tính key_xor mới (key_old xor ngaysinh mới)
                 l_key_xor := UTL_RAW.BIT_XOR (l_key, UTL_RAW.cast_to_raw(to_char(EXTRACT(DAY FROM :new.ngaysinh) )));
-                
                 -- B4: Mã lương, phụ cấp ra chuỗi mới với l_key_xor mới - NEW
                 l_luong := crypt_util.crypt(:old.luong, l_key_xor);
                 l_phucap := crypt_util.crypt(:old.phucap, l_key_xor);
-                
-                -- B5: Cập nhật lương phụ cấp
-                -- Nam
-                update nam.nhanvien
-                set
-                        ngaysinh = :new.ngaysinh,
-                        luong = l_luong,
-                        phucap = l_phucap
-                where manv = :old.manv;
-                -- Admin
-                update admin.nhanvien
-                set
-                        ngaysinh = :new.ngaysinh,
-                        luong = l_luong,
-                        phucap = l_phucap
-                where manv = :old.manv;  
-          end if;
-          
-          -- Update diachi
-          if (:new.diachi != :old.diachi) then
-                -- Nam
-                update nam.nhanvien
-                set diachi = :new.diachi
-                where manv = :old.manv;
-                -- Admin
-                update admin.nhanvien
-                set diachi = :new.diachi
-                where manv = :old.manv;                
-          end if;
-          -- Update Sodt
-          if (:new.sodt != :old.sodt) then
-                -- Nam
-                update nam.nhanvien
-                set sodt = :new.sodt
-                where manv = :old.manv;
-                -- Admin
-                update admin.nhanvien
-                set sodt = :new.sodt
-                where manv = :old.manv;                
-          end if;
-        -- Update Tennv
-        if (:new.tennv != :old.tennv) then
-                -- Nam
-                update nam.nhanvien
-                set tennv = :new.tennv
-                where manv = :old.manv;
-                -- Admin
-                update admin.nhanvien
-                set tennv = :new.tennv
-                where manv = :old.manv;                
         end if;
-        -- Update Phai
-        if (:new.phai != :old.phai) then
-                -- Nam
-                update nam.nhanvien
-                set phai = :new.phai
-                where manv = :old.manv;
-                -- Admin
-                update admin.nhanvien
-                set phai = :new.phai
-                where manv = :old.manv;                
-        end if;
-        -- Update Vaitro
-        if (:new.vaitro != :old.vaitro) then
-                -- Nam
-                update nam.nhanvien
-                set vaitro = :new.vaitro
-                where manv = :old.manv;
-                -- Admin
-                update admin.nhanvien
-                set vaitro = :new.vaitro
-                where manv = :old.manv;                
-        end if;
-                -- Update Manql
-        if (:new.manql != :old.manql) then
-                -- Nam
-                update nam.nhanvien
-                set manql = :new.manql
-                where manv = :old.manv;
-                -- Admin
-                update admin.nhanvien
-                set manql = :new.manql
-                where manv = :old.manv;                
-        end if;
-        -- Update Phg
-        if (:new.phg != :old.phg) then
-                -- Nam
-                update nam.nhanvien
-                set phg = :new.phg
-                where manv = :old.manv;
-                -- Admin
-                update admin.nhanvien
-                set phg = :new.phg
-                where manv = :old.manv;                
-        end if;
+        -- B5: Cập nhật lương phụ cấp
+        -- Nam
+        update nam.nhanvien
+        set
+                ngaysinh = :new.ngaysinh,
+                diachi = :new.diachi,
+                sodt = :new.sodt,
+                luong = l_luong,
+                phucap = l_phucap
+        where manv = :old.manv;
+        -- Admin
+        update admin.nhanvien
+        set
+                ngaysinh = :new.ngaysinh,
+                diachi = :new.diachi,
+                sodt = :new.sodt,
+                luong = l_luong,
+                phucap = l_phucap
+        where manv = :old.manv;  
 end;
-/
+
 
 -- A. VIEW        NAM.V_NHANVIEN
 -- Yêu cầu 1: Tài chính được phép cập nhật (Luong, Phucap) toan bo nhan vien

@@ -33,14 +33,18 @@ namespace UserManagement.Admin
             else if (tabctrl.SelectedTab == tpUser)
             {
                 FillCombobox();
-                LoadUser();
                 LoadUserPrivs();
+                LoadUser();
             }
-            else
+            else if(tabctrl.SelectedTab == tpRole)
             {
                 LoadListRole();
                 LoadListAllObjects();
                 LoadListNhanVien();
+            }
+            else
+            {
+                loadAudit();
             }
         }   
         //----------------------- SYSTEM TABLE TAB--------------------------
@@ -211,7 +215,6 @@ namespace UserManagement.Admin
                 DataTable dt = new DataTable();
                 dt.Load(reader);
                 dg_user.DataSource = dt;
-                reader.Close();
             }
             catch
             {
@@ -282,7 +285,7 @@ namespace UserManagement.Admin
             DataTable dt = new DataTable();
             dt.Load(reader);
             dg_usertabprivs.DataSource = dt;
-            reader.Close();
+            
 
             //load privileges into datagridview user_col_privs
             cmd = "select * from user_col_privs";
@@ -291,7 +294,7 @@ namespace UserManagement.Admin
             dt = new DataTable();
             dt.Load(reader);
             dg_usercolprivs.DataSource = dt;
-            reader.Close();
+            
         }
 
         private void cb_tables_SelectedIndexChanged(object sender, EventArgs e)
@@ -328,7 +331,7 @@ namespace UserManagement.Admin
                 DataTable dataTable = new DataTable();
                 dataTable.Load(reader);
                 dg_user.DataSource = dataTable;
-                reader.Close();
+                
             }
             catch (Exception ex)
             {
@@ -544,7 +547,7 @@ namespace UserManagement.Admin
                 OracleDataReader reader = command.ExecuteReader();
                 DataTable dt = new DataTable();
                 dt.Load(reader);
-                reader.Close();
+                
                 fpn_role.Controls.Clear();
                 foreach (DataRow row in dt.Rows)
                 {
@@ -729,6 +732,35 @@ namespace UserManagement.Admin
                 MessageBox.Show("Role không tồn tại hoặc không đủ quyền hạn!");
             }
             LoadListRole();
+        }
+        //-------------------------AUDIT TAB------------------------------
+        
+        private void loadAudit()
+        {
+            string cmd = "select audit_type, dbusername, event_timestamp, action_name, object_schema, object_name, sql_text, fga_policy_name" +
+                         " from  unified_audit_trail where (object_schema = 'ADMIN' or object_schema = 'NAM')";
+            if (checkBox1.Checked)
+            {
+                cmd += " and fga_policy_name is not null";
+            }
+            OracleCommand command = new OracleCommand(cmd, LoginForm.con);
+            try
+            {
+                OracleDataReader reader = command.ExecuteReader();
+                DataTable dataTable = new DataTable();
+                dataTable.Load(reader);
+                dgaudit.DataSource = dataTable;
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            loadAudit();
         }
 
         private void logout_btn_Click(object sender, EventArgs e)

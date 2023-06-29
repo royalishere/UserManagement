@@ -28,19 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.txbUserName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.txbPassword = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.bntExit = new System.Windows.Forms.Button();
             this.bntLogin = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btn_adminlog = new System.Windows.Forms.Button();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -59,6 +60,7 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.Controls.Add(this.flowLayoutPanel1);
             this.panel1.Controls.Add(this.txbUserName);
             this.panel1.Controls.Add(this.label2);
@@ -78,7 +80,7 @@
             // 
             // txbUserName
             // 
-            this.txbUserName.BackColor = System.Drawing.SystemColors.Control;
+            this.txbUserName.BackColor = System.Drawing.SystemColors.Window;
             this.txbUserName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txbUserName.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.txbUserName.Location = new System.Drawing.Point(125, 14);
@@ -86,12 +88,12 @@
             this.txbUserName.Name = "txbUserName";
             this.txbUserName.Size = new System.Drawing.Size(200, 18);
             this.txbUserName.TabIndex = 1;
-            this.txbUserName.Text = "kerr264";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.Location = new System.Drawing.Point(8, 13);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
@@ -101,6 +103,7 @@
             // 
             // panel2
             // 
+            this.panel2.BackColor = System.Drawing.Color.Transparent;
             this.panel2.Controls.Add(this.flowLayoutPanel2);
             this.panel2.Controls.Add(this.txbPassword);
             this.panel2.Controls.Add(this.label3);
@@ -110,9 +113,17 @@
             this.panel2.Size = new System.Drawing.Size(331, 59);
             this.panel2.TabIndex = 2;
             // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(124, 36);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(200, 1);
+            this.flowLayoutPanel2.TabIndex = 8;
+            // 
             // txbPassword
             // 
-            this.txbPassword.BackColor = System.Drawing.SystemColors.Control;
+            this.txbPassword.BackColor = System.Drawing.SystemColors.Window;
             this.txbPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txbPassword.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.txbPassword.Location = new System.Drawing.Point(125, 14);
@@ -127,6 +138,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
             this.label3.Location = new System.Drawing.Point(40, 13);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
@@ -150,7 +162,7 @@
             // bntLogin
             // 
             this.bntLogin.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.bntLogin.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.bntLogin.ForeColor = System.Drawing.Color.DarkCyan;
             this.bntLogin.Location = new System.Drawing.Point(106, 205);
             this.bntLogin.Margin = new System.Windows.Forms.Padding(2);
             this.bntLogin.Name = "bntLogin";
@@ -162,6 +174,7 @@
             // 
             // button1
             // 
+            this.button1.ForeColor = System.Drawing.Color.Black;
             this.button1.Location = new System.Drawing.Point(350, 145);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(25, 25);
@@ -173,7 +186,7 @@
             // btn_adminlog
             // 
             this.btn_adminlog.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btn_adminlog.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.btn_adminlog.ForeColor = System.Drawing.Color.DarkCyan;
             this.btn_adminlog.Location = new System.Drawing.Point(106, 241);
             this.btn_adminlog.Margin = new System.Windows.Forms.Padding(2);
             this.btn_adminlog.Name = "btn_adminlog";
@@ -183,19 +196,13 @@
             this.btn_adminlog.UseVisualStyleBackColor = true;
             this.btn_adminlog.Click += new System.EventHandler(this.btn_adminlog_Click);
             // 
-            // flowLayoutPanel2
-            // 
-            this.flowLayoutPanel2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(124, 36);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(200, 1);
-            this.flowLayoutPanel2.TabIndex = 8;
-            // 
             // LoginForm
             // 
             this.AcceptButton = this.bntLogin;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::UserManagement.Properties.Resources.background;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(392, 276);
             this.Controls.Add(this.btn_adminlog);
             this.Controls.Add(this.button1);
@@ -204,7 +211,9 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
+            this.ForeColor = System.Drawing.Color.DarkCyan;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;

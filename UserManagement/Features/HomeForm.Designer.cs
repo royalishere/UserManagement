@@ -28,9 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HomeForm));
             this.HomeTabPanel = new System.Windows.Forms.TabControl();
             this.InfoTab = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.birthday_dpk = new System.Windows.Forms.DateTimePicker();
             this.updateInfo_btn = new System.Windows.Forms.Button();
             this.gioitinh_tb = new System.Windows.Forms.TextBox();
             this.diachi_tb = new System.Windows.Forms.TextBox();
@@ -48,7 +52,6 @@
             this.sdt_tb = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.ngaysinh_tb = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.tennv_tb = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -69,6 +72,13 @@
             this.phancong_btn = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.AnnounmentTab = new System.Windows.Forms.TabPage();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.noidung_tb = new System.Windows.Forms.TextBox();
+            this.add_btn = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.dgthongbao = new System.Windows.Forms.DataGridView();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.HomeTabPanel.SuspendLayout();
             this.InfoTab.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -78,6 +88,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.AnnounmentTab.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgthongbao)).BeginInit();
             this.SuspendLayout();
             // 
             // HomeTabPanel
@@ -95,6 +109,7 @@
             // 
             // InfoTab
             // 
+            this.InfoTab.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.InfoTab.Controls.Add(this.panel2);
             this.InfoTab.Controls.Add(this.panel1);
             this.InfoTab.Location = new System.Drawing.Point(4, 24);
@@ -107,7 +122,10 @@
             // 
             // panel2
             // 
+            this.panel2.BackgroundImage = global::UserManagement.Properties.Resources.background2;
+            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.birthday_dpk);
             this.panel2.Controls.Add(this.updateInfo_btn);
             this.panel2.Controls.Add(this.gioitinh_tb);
             this.panel2.Controls.Add(this.diachi_tb);
@@ -125,7 +143,6 @@
             this.panel2.Controls.Add(this.sdt_tb);
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.label5);
-            this.panel2.Controls.Add(this.ngaysinh_tb);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.tennv_tb);
             this.panel2.Controls.Add(this.label3);
@@ -138,13 +155,24 @@
             this.panel2.Size = new System.Drawing.Size(732, 247);
             this.panel2.TabIndex = 27;
             // 
+            // birthday_dpk
+            // 
+            this.birthday_dpk.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.birthday_dpk.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.birthday_dpk.Location = new System.Drawing.Point(122, 160);
+            this.birthday_dpk.Name = "birthday_dpk";
+            this.birthday_dpk.Size = new System.Drawing.Size(125, 22);
+            this.birthday_dpk.TabIndex = 50;
+            // 
             // updateInfo_btn
             // 
+            this.updateInfo_btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.updateInfo_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.updateInfo_btn.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.updateInfo_btn.ForeColor = System.Drawing.Color.DarkBlue;
             this.updateInfo_btn.Location = new System.Drawing.Point(561, 198);
             this.updateInfo_btn.Name = "updateInfo_btn";
-            this.updateInfo_btn.Size = new System.Drawing.Size(125, 25);
+            this.updateInfo_btn.Size = new System.Drawing.Size(125, 26);
             this.updateInfo_btn.TabIndex = 49;
             this.updateInfo_btn.Text = "CẬP NHẬT";
             this.updateInfo_btn.UseVisualStyleBackColor = false;
@@ -306,14 +334,6 @@
             this.label5.TabIndex = 33;
             this.label5.Text = "Giới tính";
             // 
-            // ngaysinh_tb
-            // 
-            this.ngaysinh_tb.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.ngaysinh_tb.Location = new System.Drawing.Point(122, 157);
-            this.ngaysinh_tb.Name = "ngaysinh_tb";
-            this.ngaysinh_tb.Size = new System.Drawing.Size(125, 22);
-            this.ngaysinh_tb.TabIndex = 32;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -376,6 +396,7 @@
             // 
             // panel1
             // 
+            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.pictureBox5);
             this.panel1.Controls.Add(this.pictureBox4);
@@ -392,6 +413,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
+            this.panel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.panel1.Size = new System.Drawing.Size(732, 190);
             this.panel1.TabIndex = 26;
             // 
@@ -464,6 +486,7 @@
             this.taichinh_btn.TabIndex = 55;
             this.taichinh_btn.Text = "QL Tài chính";
             this.taichinh_btn.UseVisualStyleBackColor = false;
+            this.taichinh_btn.Click += new System.EventHandler(this.taichinh_btn_Click);
             // 
             // nhansu_btn
             // 
@@ -479,6 +502,7 @@
             this.nhansu_btn.TabIndex = 54;
             this.nhansu_btn.Text = "QL Nhân sự";
             this.nhansu_btn.UseVisualStyleBackColor = false;
+            this.nhansu_btn.Click += new System.EventHandler(this.nhansu_btn_Click);
             // 
             // logout_btn
             // 
@@ -508,6 +532,7 @@
             this.dean_btn.TabIndex = 52;
             this.dean_btn.Text = "Các đề án";
             this.dean_btn.UseVisualStyleBackColor = false;
+            this.dean_btn.Click += new System.EventHandler(this.dean_btn_Click);
             // 
             // phongban_btn
             // 
@@ -522,6 +547,7 @@
             this.phongban_btn.TabIndex = 51;
             this.phongban_btn.Text = "Các phòng ban";
             this.phongban_btn.UseVisualStyleBackColor = false;
+            this.phongban_btn.Click += new System.EventHandler(this.phongban_btn_Click);
             // 
             // phancong_btn
             // 
@@ -536,6 +562,7 @@
             this.phancong_btn.TabIndex = 50;
             this.phancong_btn.Text = "Xem phân công";
             this.phancong_btn.UseVisualStyleBackColor = false;
+            this.phancong_btn.Click += new System.EventHandler(this.phancong_btn_Click);
             // 
             // label13
             // 
@@ -549,6 +576,9 @@
             // 
             // AnnounmentTab
             // 
+            this.AnnounmentTab.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.AnnounmentTab.Controls.Add(this.panel4);
+            this.AnnounmentTab.Controls.Add(this.panel3);
             this.AnnounmentTab.Location = new System.Drawing.Point(4, 24);
             this.AnnounmentTab.Name = "AnnounmentTab";
             this.AnnounmentTab.Padding = new System.Windows.Forms.Padding(3);
@@ -557,6 +587,86 @@
             this.AnnounmentTab.Text = "Thông báo";
             this.AnnounmentTab.UseVisualStyleBackColor = true;
             // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.noidung_tb);
+            this.panel4.Controls.Add(this.add_btn);
+            this.panel4.Controls.Add(this.label14);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel4.Location = new System.Drawing.Point(3, 3);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(730, 118);
+            this.panel4.TabIndex = 1;
+            // 
+            // noidung_tb
+            // 
+            this.noidung_tb.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.noidung_tb.Location = new System.Drawing.Point(168, 48);
+            this.noidung_tb.Multiline = true;
+            this.noidung_tb.Name = "noidung_tb";
+            this.noidung_tb.Size = new System.Drawing.Size(401, 59);
+            this.noidung_tb.TabIndex = 51;
+            this.noidung_tb.Visible = false;
+            // 
+            // add_btn
+            // 
+            this.add_btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.add_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.add_btn.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.add_btn.ForeColor = System.Drawing.Color.DarkBlue;
+            this.add_btn.Location = new System.Drawing.Point(58, 63);
+            this.add_btn.Name = "add_btn";
+            this.add_btn.Size = new System.Drawing.Size(104, 26);
+            this.add_btn.TabIndex = 50;
+            this.add_btn.Text = "Thêm thông báo";
+            this.add_btn.UseVisualStyleBackColor = false;
+            this.add_btn.Visible = false;
+            this.add_btn.Click += new System.EventHandler(this.add_btn_Click);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label14.Location = new System.Drawing.Point(235, 13);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(278, 22);
+            this.label14.TabIndex = 28;
+            this.label14.Text = "BẢNG THÔNG BÁO CHI TIẾT";
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.dgthongbao);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(3, 3);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(730, 435);
+            this.panel3.TabIndex = 0;
+            // 
+            // dgthongbao
+            // 
+            this.dgthongbao.AllowUserToAddRows = false;
+            this.dgthongbao.AllowUserToDeleteRows = false;
+            this.dgthongbao.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgthongbao.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dgthongbao.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgthongbao.ColumnHeadersVisible = false;
+            this.dgthongbao.Location = new System.Drawing.Point(4, 124);
+            this.dgthongbao.Name = "dgthongbao";
+            this.dgthongbao.ReadOnly = true;
+            this.dgthongbao.RowHeadersVisible = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgthongbao.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgthongbao.RowTemplate.Height = 25;
+            this.dgthongbao.Size = new System.Drawing.Size(722, 307);
+            this.dgthongbao.TabIndex = 0;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
             // HomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -564,6 +674,7 @@
             this.ClientSize = new System.Drawing.Size(746, 471);
             this.Controls.Add(this.HomeTabPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "HomeForm";
@@ -580,6 +691,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.AnnounmentTab.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgthongbao)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -607,7 +723,6 @@
         private System.Windows.Forms.TextBox sdt_tb;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox ngaysinh_tb;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox tennv_tb;
         private System.Windows.Forms.Label label3;
@@ -627,5 +742,13 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.DateTimePicker birthday_dpk;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.DataGridView dgthongbao;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.TextBox noidung_tb;
+        private System.Windows.Forms.Button add_btn;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
     }
 }
