@@ -82,7 +82,7 @@ namespace UserManagement.Features
             }
             catch
             {
-                MessageBox.Show("Đã xảy ra lỗi. Vui lòng kiểm tra thông tin");
+                MessageBox.Show("Đã xảy ra lỗi. Vui lòng kiểm tra lại thông tin");
             }
         }
 
@@ -96,13 +96,20 @@ namespace UserManagement.Features
             try
             {
                 OracleCommand command = new OracleCommand(cmd, LoginForm.con);
-                command.ExecuteNonQuery();
-                MessageBox.Show("Cập nhật đề án thành công");
-                ProjectForm_Load(sender, e);
+                if (command.ExecuteNonQuery() == 0)
+                {
+                    MessageBox.Show("Không tìm thấy đề án cần cập nhật");
+                    return;
+                }
+                else
+                {
+                    MessageBox.Show("Cập nhật đề án thành công");
+                    ProjectForm_Load(sender, e);
+                }
             }
             catch
             {
-                MessageBox.Show("Đã xảy ra lỗi. Vui lòng kiểm tra thông tin");
+                MessageBox.Show("Đã xảy ra lỗi. Kiểm tra lại mã đề án và phòng ban");
             }
         }
 

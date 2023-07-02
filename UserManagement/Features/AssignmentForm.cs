@@ -74,9 +74,15 @@ namespace UserManagement.Features
             try
             {
                 OracleCommand command = new OracleCommand(cmd, LoginForm.con);
-                command.ExecuteNonQuery();
-                MessageBox.Show("Thêm phân công thành công");
-                AssignmentForm_Load(sender, e);
+                if(command.ExecuteNonQuery() == 0)
+                {
+                    MessageBox.Show("Thêm thất bại. Vui lòng kiểm tra lại thông tin");
+                }
+                else
+                {
+                    MessageBox.Show("Thêm phân công thành công");
+                    AssignmentForm_Load(sender, e);
+                }
             }
             catch
             {
@@ -93,9 +99,15 @@ namespace UserManagement.Features
             try
             {
                 OracleCommand command = new OracleCommand(cmd, LoginForm.con);
-                command.ExecuteNonQuery();
-                MessageBox.Show("Cập nhật thành công");
-                AssignmentForm_Load(sender, e);
+                if( command.ExecuteNonQuery() == 0)
+                {
+                    MessageBox.Show("Không tìm thấy phân công cần cập nhật");
+                }
+                else
+                {
+                    MessageBox.Show("Cập nhật thành công");
+                    AssignmentForm_Load(sender, e);
+                }
             }
             catch (Exception ex)
             {

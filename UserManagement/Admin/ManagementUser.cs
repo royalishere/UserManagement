@@ -737,7 +737,7 @@ namespace UserManagement.Admin
         
         private void loadAudit()
         {
-            string cmd = "select audit_type, dbusername, event_timestamp, action_name, object_schema, object_name, sql_text, fga_policy_name" +
+            string cmd = "select dbusername, event_timestamp, action_name, object_schema, object_name, sql_text, sql_binds, fga_policy_name" +
                          " from  unified_audit_trail where (object_schema = 'ADMIN' or object_schema = 'NAM')";
             if (checkBox1.Checked)
             {

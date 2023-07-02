@@ -96,9 +96,15 @@ namespace UserManagement.Features
             OracleCommand command = new OracleCommand(cmd, LoginForm.con);
             try
             {
-                command.ExecuteNonQuery();
+                if(command.ExecuteNonQuery() == 0)
+                {
+                    MessageBox.Show("Không tìm thấy phòng ban");
+                }
+                else
+                {
                 MessageBox.Show("Cập nhật phòng ban thành công");
                 DepartmentForm_Load(null, null);
+                }
             }
             catch (Exception ex)
             {
